@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        style="@style/texts"
+        android:id="@+id/tvAboutUs"
+        android:gravity="center"
+        android:text="@string/aboutUs"
+        android:textColor="#ffff"
+        android:textSize="25sp"/>
+    <TextView
+        style="@style/texts"
+        android:id="@+id/tvIntroduce"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/jieshao"
+        android:textColor="#ffff"
+        android:textSize="20sp"/>
+</androidx.constraintlayout.widget.LinearLayout>
