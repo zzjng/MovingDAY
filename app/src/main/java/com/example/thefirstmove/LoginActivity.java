@@ -25,7 +25,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText editPhone;
     private EditText editPwd;
     private Button btnLogin;
-
+//数据连接
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
@@ -82,7 +82,6 @@ public class LoginActivity extends AppCompatActivity {
      */
     public void OnMyRegistClick(View v) {
         Intent intent = new Intent(LoginActivity.this, RegistActivity.class);
-        //intent.putExtra("info", "No66778899");
         LoginActivity.this.startActivity(intent);
     }
 
