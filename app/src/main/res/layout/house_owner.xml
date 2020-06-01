@@ -20,9 +20,16 @@
     <ImageView
         android:id="@+id/CameraPic"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:layout_height="300dp" />
 
+    <Button
+        android:id="@+id/button"
+        style="@style/texts"
+        android:onClick="showimage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/yellowrow_shape"
+        android:text="显示照片" />
 
 
 </LinearLayout>
