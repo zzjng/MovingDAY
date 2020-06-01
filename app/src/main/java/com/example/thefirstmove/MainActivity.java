@@ -4,7 +4,7 @@ package com.example.thefirstmove;
  * @programFunction: help people to live a suitable house
  * @createDate: 2020/05/19
  * @author: 张召静 周梦焓
- * totally six parts:登录注册，我是房主，我是房客，我要合租，用户协议，关于我们
+ * totally six parts:登录注册，我是房主，我是房客，我要合租，个人信息，关于我们
  */
 
 import android.Manifest;
@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     private CircleMenuLayout mCircleMenuLayout;
 
-    private String[] mItemTexts = new String[] { "登录&注册", "关于我们", "用户协议",
+    private String[] mItemTexts = new String[] { "登录&注册", "关于我们", "个人信息",
             "我是房主", "我是房客", "我要合租" };
     private int[] mItemImgs = new int[] { R.mipmap.home_mbank_1_normal,
             R.mipmap.home_mbank_2_normal, R.mipmap.home_mbank_3_normal,

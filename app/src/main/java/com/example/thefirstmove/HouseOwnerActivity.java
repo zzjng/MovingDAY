@@ -6,18 +6,28 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
 
-class HouseOwnerActivity extends AppCompatActivity {
+import java.io.File;
+import java.io.IOException;
+
+public class HouseOwnerActivity extends AppCompatActivity {
+
+    private Uri imageUri;
+    private ImageView cameraPic;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -130,12 +140,32 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 }
 //打开相机
 public void startCamera(){
+
+    cameraPic = findViewById(R.id.CameraPic);
+    System.out.println(getExternalCacheDir());
+    File outputImage = new File(getExternalCacheDir(), "output_image.jpg");
+    try {
+        if (outputImage.exists()) {
+            outputImage.delete();
+        }
+        outputImage.createNewFile();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    ActivityCompat.requestPermissions(HouseOwnerActivity.this, new String[]{
+            Manifest.permission.CAMERA,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
+
+
+    //判断版本号
+    if (Build.VERSION.SDK_INT < 24) {
+        imageUri = Uri.fromFile(outputImage);
+    } else {
+        imageUri = FileProvider.getUriForFile(HouseOwnerActivity.this,
+                "com.example.myapplication7.fileprovider", outputImage);
+    }
     Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
     startActivityForResult(intent, 0);
 
 }
-
-
-
-
 }
