@@ -1,22 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@mipmap/bg"
+    tools:context=".AboutUsActivity">
 
-    <TextView
-        style="@style/texts"
-        android:id="@+id/tvAboutUs"
-        android:gravity="center"
-        android:text="@string/aboutUs"
-        android:textColor="#ffff"
-        android:textSize="25sp"/>
-    <TextView
-        style="@style/texts"
-        android:id="@+id/tvIntroduce"
-        android:gravity="center"
-        android:layout_width="wrap_content"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="369dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center_horizontal"
+        app:srcCompat="@mipmap/about" />
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <Button
+        android:id="@+id/first"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/jieshao"
-        android:textColor="#ffff"
-        android:textSize="20sp"/>
-</androidx.constraintlayout.widget.LinearLayout>
+        android:layout_weight="1"
+        android:layout_margin="8dp"
+        android:textColor="#FFFFFFFF"
+        android:minWidth="120dp"
+        android:minHeight="32dp"
+        android:background="@drawable/btn_blue_selector"
+        android:text="成员1"/>
+    <Button
+        android:id="@+id/second"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_weight="1"
+        android:textColor="#FFFFFFFF"
+        android:minWidth="120dp"
+        android:minHeight="32dp"
+        android:background="@drawable/btn_blue_selector"
+        android:text="成员2" />
+</LinearLayout>
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+    </FrameLayout>
+</LinearLayout>

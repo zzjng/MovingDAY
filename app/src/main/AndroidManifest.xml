@@ -2,20 +2,29 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.thefirstmove">
-    <!-- 访问网络权限 -->
-    <uses-permission android:name="android.permission.INTERNET" /> <!-- 获取网络状态权限 -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 允许APP访问大概地理位置 -->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 允许APP访问精确地理位置 -->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- 写入、读取数据的权利 -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 请求能够访问摄像头设备 -->
-    <uses-permission android:name="android.permission.CAMERA" />
+<!--访问网络权限-->
+    <uses-permission android:name="android.permission.INTERNET"/>
+<!--    获取网络状态权限-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+<!--    允许APP访问大概地理位置-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+<!--    允许APP访问精确地理位置-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+<!--    写入、读取数据的权利-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+<!--    请求能够访问摄像头设备-->
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-feature android:name="android.hardware.camera"/>
+<!--    允许程序读取受保护的日志文件-->
+    <uses-permission android:name="android.permission.READ_LOGS"
+        tools:ignore="ProtectedPermissions" />
+<!--    录音权限-->
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
 
-    <uses-feature android:name="android.hardware.camera" /> <!-- 允许程序读取受保护的日志文件 -->
-    <uses-permission
-        android:name="android.permission.READ_LOGS"
-        tools:ignore="ProtectedPermissions" /> <!-- 录音权限 -->
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+
+
 
     <application
         android:allowBackup="true"
@@ -24,7 +33,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LodgerActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,13 +40,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".RegistActivity"
+        <activity android:name=".RegistActivity"
             android:exported="true" />
-        <activity
-            android:name=".LoginActivity"
-            android:exported="true" />
-
+        <activity android:name=".HouseOwnerActivity"
+            android:exported="true"/>
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.thefirstmove.provider"
@@ -46,7 +51,7 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths" />
+                android:resource="@xml/file_paths"/>
         </provider>
     </application>
 
