@@ -1,15 +1,17 @@
 package com.example.thefirstmove;
 /**
- *注册界面
+ *登录界面
  * 需要用户名、密码
  */
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,9 +31,11 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
+
         editPhone = findViewById(R.id.editPhone);
         editPwd = findViewById(R.id.editPwd);
         btnLogin = findViewById(R.id.btnLogin);
+
     }
 
     /**
@@ -39,7 +43,8 @@ public class LoginActivity extends AppCompatActivity {
      *
      * @param v
      */
-    public void OnMyLoginClick(View v) {
+
+        public void OnMyLoginClick(View v) {
         if (pubFun.isEmpty(editPhone.getText().toString()) || pubFun.isEmpty(editPwd.getText().toString())) {
             Toast.makeText(this, "手机号或密码不能为空！", Toast.LENGTH_SHORT).show();
             return;
@@ -48,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
 
 //数据库
         //call DBOpenHelper
-        DBOpenHelper helper = new DBOpenHelper(this, "qianbao.db", null, 1);
+        DBOpenHelper helper = new DBOpenHelper(this, "movingday.db", null, 1);
         SQLiteDatabase db = helper.getWritableDatabase();
         Cursor c = db.query("user_tb", null, "userID=? and pwd=?", new String[]{editPhone.getText().toString(), editPwd.getText().toString()}, null, null, null);
         if (c != null && c.getCount() >= 1) {
