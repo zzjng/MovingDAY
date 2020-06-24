@@ -24,8 +24,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TenantActivity"></activity>
-        <activity android:name=".AU_Fragment" />
+        <activity android:name=".AU_Fragment"></activity>
         <activity android:name=".AU_AFragment" />
         <activity
             android:name=".AboutUsActivity"
@@ -42,9 +41,6 @@
             android:exported="true" />
         <activity
             android:name=".HouseOwnerActivity"
-            android:exported="true" />
-        <activity
-            android:name=".individualActivity"
             android:exported="true" />
 
         <provider

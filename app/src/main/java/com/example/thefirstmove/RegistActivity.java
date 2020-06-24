@@ -1,6 +1,9 @@
 package com.example.thefirstmove;
 
-
+/**
+ *注册界面
+ * 需要用户名、密码
+ */
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -48,7 +51,7 @@ public class RegistActivity extends AppCompatActivity {
 
         if(isTrue = true){
             //call DBOpenHelper
-            DBOpenHelper helper = new DBOpenHelper(this,"qianbao.db",null,1);
+            DBOpenHelper helper = new DBOpenHelper(this,"movingday.db",null,1);
             SQLiteDatabase db = helper.getWritableDatabase();
             Cursor c = db.query("user_tb",null,"userID=?",new String[]{editPhone.getText().toString()},null,null,null);
             if(c!=null && c.getCount() >= 1){
