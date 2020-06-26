@@ -1,2 +1,8 @@
 rootProject.name='The firstMove'
 include ':app'
+
+include ':AMapTripModule'
+project(":AMapTripModule").projectDir=new File("AMapTripModule")
+
+include ':AMapPoiSearchModule'
+project(":AMapPoiSearchModule").projectDir = new File("AMapPoiSearchModule")

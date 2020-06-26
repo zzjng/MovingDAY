@@ -7,11 +7,9 @@ package com.example.thefirstmove;
  * totally six parts:登录注册，我是房主，我是房客，我要合租，个人信息，关于我们
  */
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Toast;
 
@@ -143,6 +141,5 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
-
 
 }

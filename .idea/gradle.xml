@@ -10,6 +10,8 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/AMapPoiSearchModule" />
+            <option value="$PROJECT_DIR$/AMapTripModule" />
             <option value="$PROJECT_DIR$/app" />
           </set>
         </option>

@@ -4,6 +4,61 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/bg"
+    android:orientation="vertical"
     tools:context=".TenantActivity">
 
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/tabs_rg"
+        ></FrameLayout>
+    <RadioGroup
+        android:id="@+id/tabs_rg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/findmap"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_blue_selector"
+            android:text="地图"
+            android:textColor="#FFFFFFFF" />
+
+        <Button
+            android:id="@+id/divination"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_blue_selector"
+            android:text="卜卦"
+            android:textColor="#FFFFFFFF" />
+
+        <Button
+            android:id="@+id/weather"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_blue_selector"
+            android:text="天气"
+            android:textColor="#FFFFFFFF" />
+
+        <Button
+            android:id="@+id/house"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_blue_selector"
+            android:text="查房"
+            android:textColor="#FFFFFFFF" />
+    </RadioGroup>
 </RelativeLayout>
