@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:id="@+id/search_weather_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/edit_city"
+            android:layout_width="240dp"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="2dp"
+            android:gravity="center"
+            android:hint="输入城市名查询天气"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/search_w_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_toRightOf="@+id/edit_city"
+            android:background="#8fbc8f"
+            android:gravity="center"
+            android:text="查询"
+            android:textColor="#ffffff" />
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/search_weather"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/search_weather_layout"
+        android:layout_marginTop="-9dp" />
+
+</RelativeLayout>

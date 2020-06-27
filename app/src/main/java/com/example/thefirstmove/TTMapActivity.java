@@ -1,12 +1,17 @@
 package com.example.thefirstmove;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.amap.api.maps.model.LatLng;
 import com.amap.api.services.core.PoiItem;
@@ -26,6 +31,7 @@ public class TTMapActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ttmap);
 
+        checkLocationPermission();
         RelativeLayout contentView = (RelativeLayout)findViewById(R.id.content_view);
 
         mTripHostDelegate = new TripHostModuleDelegate();
@@ -204,6 +210,26 @@ public class TTMapActivity extends AppCompatActivity {
     private void onBackToInputMode(){
         mTripHostDelegate.setMode(IDelegate.INPUT_MODE, mStartPoi);
         mDestPoi = null;
+    }
+
+
+
+
+
+    private void checkLocationPermission() {
+        // 检查是否有定位权限
+        // 检查权限的方法: ContextCompat.checkSelfPermission()两个参数分别是Context和权限名.
+        // 返回PERMISSION_GRANTED是有权限，PERMISSION_DENIED没有权限
+        if (ContextCompat.checkSelfPermission(TTMapActivity.this,
+                Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+            //没有权限，向系统申请该权限。
+            Log.i("MY","没有权限");
+            ActivityCompat.requestPermissions(TTMapActivity.this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},100);
+        } else {
+            //已经获得权限，则执行定位请求。
+            Toast.makeText(TTMapActivity.this, "已获取定位权限",Toast.LENGTH_SHORT).show();
+        }
     }
 }
 

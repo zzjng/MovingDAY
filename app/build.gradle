@@ -6,6 +6,8 @@ android {
 //以下为导入地图所需
     packagingOptions {
         exclude 'assets/*'
+        /*exclude 'okhttp3/internal/publicsuffix/NOTICE'
+        exclude 'okhttp3/internal/publicsuffix/publicsuffixes.gz'*/
     }
     /*splits {
         abi {
@@ -55,6 +57,11 @@ dependencies {
     compileOnly 'com.amap.api:search:latest.integration'
     //导航功能
     compileOnly 'com.amap.api:navi-3dmap:latest.integration'
+    //天气
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation 'com.squareup.okio:okio:1.12.0'
+    //google
+    implementation 'com.google.code.gson:gson:2.8.2'
     implementation project(path: ':AMapTripModule')
     implementation project(path: ':AMapPoiSearchModule')
     //2D地图
