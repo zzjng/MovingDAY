@@ -7,11 +7,9 @@ package com.example.thefirstmove;
  * totally six parts:登录注册，我是房主，我是房客，我要合租，个人信息，关于我们
  */
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Toast;
 
@@ -24,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     private CircleMenuLayout mCircleMenuLayout;
 
-    private String[] mItemTexts = new String[] { "登录&注册", "关于我们", "个人信息",
+    private String[] mItemTexts = new String[] { "登录&注册", "关于我们", "个人空间",
             "我是房主", "我是房客", "我要合租" };
     private int[] mItemImgs = new int[] { R.mipmap.home_mbank_1_normal,
             R.mipmap.home_mbank_2_normal, R.mipmap.home_mbank_3_normal,
@@ -45,14 +43,14 @@ public class MainActivity extends AppCompatActivity {
                 if (mItemTexts[pos] == "我是房主") {
                     openHouseOwner(view);
                 } else if (mItemTexts[pos] == "我是房客") {
-                    openLodger(view);
+                    openTenant(view);
                 } else if (mItemTexts[pos] == "登录&注册") {
                     openLogin(view);
                 } else if (mItemTexts[pos] == "我要合租") {
                     openShare(view);
                 } else if (mItemTexts[pos] == "关于我们") {
                     openAboutUs(view);
-                } else if (mItemTexts[pos] == "用户协议") {
+                } else if (mItemTexts[pos] == "个人空间") {
                     openUserAgreement(view);
                 }
                 ;
@@ -79,9 +77,9 @@ public class MainActivity extends AppCompatActivity {
      * 跳转至我是房客界面，包含地图查找优质房源，以及搬家吉日
      * @param v
      */
-    private void openLodger(View v){
+    private void openTenant(View v){
         Intent intent = new Intent();
-        intent.setClass(MainActivity.this, LodgerActivity.class);
+        intent.setClass(MainActivity.this, TenantActivity.class);
         this.startActivity(intent);
     }
 
@@ -143,6 +141,5 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
-
 
 }

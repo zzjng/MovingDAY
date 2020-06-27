@@ -1,38 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".individualActivity">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/xingbie"
+        android:gravity="left"
+        android:textColor="#ffff"
+        android:textSize="20sp"
+        tools:ignore="MissingConstraints" >
 
-
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="@string/xingbie"
-    android:gravity="left"
-    android:textColor="#ffff"
-    android:textSize="20sp"
-    tools:ignore="MissingConstraints" >
-<RadioGroup
-    android:layout_height="match_parent"
-    android:layout_width="match_parent"
-    android:id="@+id/sexselect"
-    android:orientation="horizontal">
-    <RadioButton
+    </TextView>
+    <RadioGroup
         android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:text="男"
-        android:id="@+id/boy"
-        android:checked="true"/>
-    <RadioButton
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        android:text="女"
-        android:id="@+id/girl"
-        android:checked="true"/>
-</RadioGroup>
-</TextView>
+        android:id="@+id/sexselect"
+        android:orientation="horizontal">
+        <RadioButton
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:text="男"
+            android:id="@+id/boy"
+            android:checked="true"/>
+        <RadioButton
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:text="女"
+            android:id="@+id/girl"
+            android:checked="true"/>
+    </RadioGroup>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

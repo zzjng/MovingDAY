@@ -3,6 +3,19 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
+//以下为导入地图所需
+    packagingOptions {
+        exclude 'assets/*'
+    }
+    /*splits {
+        abi {
+            enable true
+            reset()
+            include 'armeabi'//, 'x86_64'//只打包armeabi平台的，就算有其他文件夹也不管
+//            include 'armeabi'//, 'armeabi-v7a', 'arm64-v8a', 'mips', 'x86', 'x86_64'
+        }
+    }*/
+//以上为导入地图所需
 
     defaultConfig {
         applicationId "com.example.thefirstmove"
@@ -32,4 +45,21 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation files('libs/mysql-connector-java-8.0.16.jar')
+    implementation 'com.android.support:support-annotations:22.0.0'
+
+    //3D地图so及jar//navi导航SDK 5.0.0以后版本包含了3D地图SDK，所以请不要同时引入 map3d 和 navi SDK
+    //implementation 'com.amap.api:3dmap:latest.integration'
+    //定位功能
+    compileOnly 'com.amap.api:location:latest.integration'
+    //搜索功能
+    compileOnly 'com.amap.api:search:latest.integration'
+    //导航功能
+    compileOnly 'com.amap.api:navi-3dmap:latest.integration'
+    implementation project(path: ':AMapTripModule')
+    implementation project(path: ':AMapPoiSearchModule')
+    //2D地图
+    //compileOnly 'com.amap.api:map2d:latest.integration'
+    //google包
+    //implementation 'com.google.code.gson:gson:2.8.6'
+
 }
