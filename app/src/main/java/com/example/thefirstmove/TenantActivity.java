@@ -25,6 +25,14 @@ public class TenantActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        Button Second=(Button)findViewById(R.id.weather);
+        Second.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TenantActivity.this,TTWeatherActivity.class);
+                startActivity(intent);
+            }
+        });
        /* Button First=(Button)findViewById(R.id.map);
         First.setOnClickListener(new View.OnClickListener() {
             @Override

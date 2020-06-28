@@ -32,16 +32,6 @@
             android:textColor="#FFFFFFFF" />
 
         <Button
-            android:id="@+id/divination"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:layout_weight="1"
-            android:background="@drawable/btn_blue_selector"
-            android:text="卜卦"
-            android:textColor="#FFFFFFFF" />
-
-        <Button
             android:id="@+id/weather"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -52,13 +42,23 @@
             android:textColor="#FFFFFFFF" />
 
         <Button
+            android:id="@+id/divination"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_blue_selector"
+            android:text="卜卦"
+            android:textColor="#FFFFFFFF" />
+
+        <Button
             android:id="@+id/house"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:layout_weight="1"
             android:background="@drawable/btn_blue_selector"
-            android:text="查房"
+            android:text="查找房源"
             android:textColor="#FFFFFFFF" />
     </RadioGroup>
 </RelativeLayout>
