@@ -1,10 +1,10 @@
 package com.example.thefirstmove;
 /**
- * @programName: MovingDay
+ * @programName: MovingDAY
  * @programFunction: help people to live a suitable house
  * @createDate: 2020/05/19
  * @author: 张召静 周梦焓
- * totally six parts:登录注册，我是房主，我是房客，我要合租，个人信息，关于我们
+ * totally six parts:登录注册，我是房主，我是房客，我要合租，个人资料，关于我们
  */
 
 import android.content.Intent;
@@ -19,7 +19,8 @@ public class MainActivity extends AppCompatActivity {
 
     //第一次点击事件发生的时间
     private long mExitTime;
-
+    private String phoneno;
+    Bundle bundle=new Bundle();
     private CircleMenuLayout mCircleMenuLayout;
 
     private String[] mItemTexts = new String[] { "登录&注册", "关于我们", "个人空间",
@@ -33,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         CircleMenuLayout mCircleMenuLayout = findViewById(R.id.id_menulayout);
         mCircleMenuLayout.setMenuItemIconsAndTexts(mItemImgs, mItemTexts);
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
                 } else if (mItemTexts[pos] == "关于我们") {
                     openAboutUs(view);
                 } else if (mItemTexts[pos] == "个人空间") {
-                    openUserAgreement(view);
+                    openIndividual(view);
                 }
                 ;
             }
@@ -70,11 +70,11 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = new Intent();
         intent.setClass(MainActivity.this, LoginActivity.class);
-        this.startActivity(intent);
+        startActivityForResult(intent, 100);
     }
 
     /**
-     * 跳转至我是房客界面，包含地图查找优质房源，以及搬家吉日
+     * 跳转至我是房客界面
      * @param v
      */
     private void openTenant(View v){
@@ -104,12 +104,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * 跳转至用户协议界面，内有用户协议
+     * 跳转至个人资料界面
      * @param v
      */
-    private void openUserAgreement(View v){
+    private void openIndividual(View v){
         Intent intent = new Intent();
-        intent.setClass(MainActivity.this, individualActivity.class);
+        intent.setClass(MainActivity.this, UserInfoActivity.class);
+        Bundle bundle2=new Bundle();
+        bundle2.putString("phone",phoneno);
+        //System.out.println("看这儿看着！"+phoneno);
+        intent.putExtras(bundle2);
         this.startActivity(intent);
     }
 
@@ -141,5 +145,13 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==100&&resultCode==101) {
+            bundle=data.getExtras();
+            phoneno=bundle.getString("phoneno");
+            //phoneno = data.getStringExtra("phoneno");
+        }
+    }
 }

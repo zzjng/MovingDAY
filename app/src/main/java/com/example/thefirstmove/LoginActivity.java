@@ -4,14 +4,12 @@ package com.example.thefirstmove;
  * 需要用户名、密码
  */
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -73,6 +71,14 @@ public class LoginActivity extends AppCompatActivity {
             SharedPreferences.Editor editor = mySharedPreferences.edit();//实例化SharedPreferences.Editor对象
             editor.putString("userID", editPhone.getText().toString()); //用putString的方法保存数据
             editor.commit(); //提交当前数据
+
+            //传用户手机号到个人空间
+            String phoneno=editPhone.getText().toString();
+            Intent intent=new Intent();
+            Bundle bundle=new Bundle();
+            bundle.putString("phoneno",phoneno);
+            intent.putExtras(bundle);
+            this.setResult(101,intent);
 
             this.finish();
         } else {
