@@ -123,10 +123,11 @@
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp">
         <TextView
+            android:id="@+id/aaaa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:text="签  名"
+            android:text="介  绍"
             android:textColor="#ffffff"
             android:textSize="30sp" />
         <TextView
@@ -136,9 +137,12 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="5dp"
+            android:layout_toRightOf="@+id/aaaa"
             android:textColor="#a3a3a3"
-            android:textSize="26sp" />
-        <!--android:text="你们好"-->
+            android:textSize="26sp"
+            android:gravity="right"
+            android:text="大家好" />
+
     </RelativeLayout>
     <View
         android:layout_width="fill_parent"
@@ -154,7 +158,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:text="Q Q"
+            android:text="Q   Q"
             android:textColor="#ffffff"
             android:textSize="30sp" />
         <TextView

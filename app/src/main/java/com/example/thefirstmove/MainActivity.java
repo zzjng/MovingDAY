@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     Bundle bundle=new Bundle();
     private CircleMenuLayout mCircleMenuLayout;
 
-    private String[] mItemTexts = new String[] { "登录&注册", "关于我们", "个人空间",
+    private String[] mItemTexts = new String[] { "登录&注册", "关于我们", "个人资料",
             "我是房主", "我是房客", "合租论坛" };
     private int[] mItemImgs = new int[] { R.mipmap.home_mbank_1_normal,
             R.mipmap.home_mbank_2_normal, R.mipmap.home_mbank_3_normal,
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
                     openShare(view);
                 } else if (mItemTexts[pos] == "关于我们") {
                     openAboutUs(view);
-                } else if (mItemTexts[pos] == "个人空间") {
+                } else if (mItemTexts[pos] == "个人资料") {
                     openIndividual(view);
                 }
                 ;
@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * 跳转至我要合租界面，里面包含合租信息以及租客交流
+     * 跳转至合租论坛界面
      * @param v
      */
     private void openShare(View v){
