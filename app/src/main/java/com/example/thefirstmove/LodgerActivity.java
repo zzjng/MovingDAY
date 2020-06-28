@@ -1,17 +1,13 @@
 package com.example.thefirstmove;
 
 import android.app.Activity;
-import android.content.Context;
-import android.view.inputmethod.InputMethodManager;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
 import android.widget.Toast;
-
 
 import com.example.thefirstmove.hezu.Bean;
 import com.example.thefirstmove.hezu.SearchAdapter;
