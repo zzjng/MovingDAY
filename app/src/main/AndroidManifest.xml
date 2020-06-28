@@ -41,6 +41,8 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <!--用于申请调用A-GPS模块-->
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"/>
+    <!--用于发送短信模块-->
+    <uses-permission android:name="android.permission.SEND_SMS" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -75,7 +77,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".RegistActivity"
+            android:name=".LodgerActivity"
             android:exported="true" />
         <activity
             android:name=".HouseOwnerActivity"

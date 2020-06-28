@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private CircleMenuLayout mCircleMenuLayout;
 
     private String[] mItemTexts = new String[] { "登录&注册", "关于我们", "个人空间",
-            "我是房主", "我是房客", "我要合租" };
+            "我是房主", "我是房客", "合租论坛" };
     private int[] mItemImgs = new int[] { R.mipmap.home_mbank_1_normal,
             R.mipmap.home_mbank_2_normal, R.mipmap.home_mbank_3_normal,
             R.mipmap.home_mbank_4_normal, R.mipmap.home_mbank_5_normal,
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                     openTenant(view);
                 } else if (mItemTexts[pos] == "登录&注册") {
                     openLogin(view);
-                } else if (mItemTexts[pos] == "我要合租") {
+                } else if (mItemTexts[pos] == "合租论坛") {
                     openShare(view);
                 } else if (mItemTexts[pos] == "关于我们") {
                     openAboutUs(view);
