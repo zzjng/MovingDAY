@@ -64,6 +64,7 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.2'
     implementation project(path: ':AMapTripModule')
     implementation project(path: ':AMapPoiSearchModule')
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
     //2D地图
     //compileOnly 'com.amap.api:map2d:latest.integration'
     //google包
