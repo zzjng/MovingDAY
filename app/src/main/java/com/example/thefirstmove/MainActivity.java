@@ -80,6 +80,9 @@ public class MainActivity extends AppCompatActivity {
     private void openTenant(View v){
         Intent intent = new Intent();
         intent.setClass(MainActivity.this, TenantActivity.class);
+        Bundle bundle2=new Bundle();
+        bundle2.putString("phone",phoneno);
+        intent.putExtras(bundle2);
         this.startActivity(intent);
     }
 

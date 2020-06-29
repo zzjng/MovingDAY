@@ -33,7 +33,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ChangeUserInfoActivity"></activity>
+        <activity android:name=".TT_CFragment"/>
+        <activity android:name=".TT_BFragment" />
+        <activity
+            android:name=".ChatActivity"
+            android:exported="true" />
+        <activity android:name=".ChangeUserInfoActivity" />
         <activity android:name=".ChoosePoiActivity" />
         <activity android:name=".SetFavAddressActivity" />
         <activity android:name=".ChooseCityActivity" />
