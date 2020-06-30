@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 /**
@@ -14,6 +15,7 @@ import android.widget.TextView;
  */
 
 public class ViewHolder {
+
 
     private SparseArray<View> mViews;
     private Context mContext;
@@ -27,6 +29,10 @@ public class ViewHolder {
         mViews = new SparseArray<>();
         mPosition = position;
         mConvertView.setTag(this);
+    }
+
+    public ViewHolder() {
+        
     }
 
     /**

@@ -2,7 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.thefirstmove">
-    <!-- 写入、读取数据的权利 -->
+    <!-- 访问网络权限 -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 获取网络状态权限 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 允许APP访问大概地理位置 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 允许APP访问精确地理位置 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- 写入、读取数据的权利 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 请求能够访问摄像头设备 -->
     <uses-permission android:name="android.permission.CAMERA" />
@@ -12,8 +16,11 @@
         android:name="android.permission.READ_LOGS"
         tools:ignore="ProtectedPermissions" /> <!-- 录音权限 -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" /> <!-- 以下为高德地图需要权限 -->
-    <!-- 允许程序设置内置sd卡的写权限 -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 允许程序读写手机状态和身份 -->
+    <!-- 允许程序打开网络套接字 -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 允许程序设置内置sd卡的写权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 允许程序获取网络状态 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 允许程序访问WiFi网络信息 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 允许程序读写手机状态和身份 -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 允许程序访问CellID或WiFi热点来获取粗略的位置 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 用于进行网络定位 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 用于访问GPS定位 -->
@@ -33,23 +40,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TT_CFragment"/>
-        <activity android:name=".TT_BFragment" />
-        <activity
-            android:name=".ChatActivity"
-            android:exported="true" />
-        <activity android:name=".ChangeUserInfoActivity" />
+        <activity android:name=".hezu.SearchActivity"></activity>
+        <activity android:name=".hezu.HezuxinxiActivity" />
         <activity android:name=".ChoosePoiActivity" />
         <activity android:name=".SetFavAddressActivity" />
         <activity android:name=".ChooseCityActivity" />
-        <activity android:name=".TTSearchWeather" />
         <activity
             android:name=".TTMapActivity"
             android:exported="true" />
         <activity android:name=".TT_AFragment" />
-        <activity
-            android:name=".TTWeatherActivity"
-            android:exported="true" />
 
         <meta-data
             android:name="com.amap.api.v2.apikey"
@@ -62,9 +61,6 @@
         <activity
             android:name=".TenantActivity"
             android:exported="true" />
-        <activity
-            android:name=".UserInfoActivity"
-            android:exported="true" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -73,17 +69,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".RegistActivity"
+            android:name=".LodgerActivity"
             android:exported="true" />
-        <activity
-            android:name=".HouseOwnerActivity"
-            android:exported="true" />
-        <activity
-            android:name=".LoginActivity"
-            android:exported="true" />
-        <activity
-            android:name=".ResPwdActivity"
-            android:exported="true" />
+
 
         <provider
             android:name="androidx.core.content.FileProvider"

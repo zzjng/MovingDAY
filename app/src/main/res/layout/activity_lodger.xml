@@ -11,13 +11,18 @@
     <SearchView
         android:id="@+id/main_search_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <ListView
-        android:visibility="gone"
-        android:id="@+id/main_lv_search_results"
+        android:onClick="OnMysearchClick"
+        android:layout_height="wrap_content"
+        android:text="（点击弹出筛选窗口）"/>
+    <Button
+        android:id="@+id/tijiaoxinxi"
+        android:text="没有找到？点击提交一下个人信息吧！"
+        android:onClick="OnMyqueClick"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"/>
 
-    </ListView>
+
 </LinearLayout>
+
+
+

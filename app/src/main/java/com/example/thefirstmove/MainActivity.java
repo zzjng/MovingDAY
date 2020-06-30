@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private void openShare(View v){
         Intent intent=new Intent();
-        intent.setClass(MainActivity.this, ShareActivity.class);
+        intent.setClass(MainActivity.this, LodgerActivity.class);
         this.startActivity(intent);
     }
 

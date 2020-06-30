@@ -9,7 +9,7 @@ import com.example.thefirstmove.hezu.Bean;
 import java.util.List;
 
 /**
- * Created by yetwish on 2015-05-11
+ * zzj
  */
 
 public class SearchAdapter extends CommonAdapter<Bean>{

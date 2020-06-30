@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#eee"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:text="提交合租个人信息"
+        android:layout_marginTop="@dimen/paddingx2"
+        android:textSize="35dp"
+        android:textColor="#4169E1"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:layout_marginBottom="10dp"
+        android:text="入住区域"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"
+        android:textColor="#000000"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+        <Spinner
+            android:id="@+id/province"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_width="100dp" />
+        <Spinner
+            android:id="@+id/city"
+            android:layout_width="112dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+        <Spinner
+            android:id="@+id/county"
+            android:layout_width="100dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:text="理想租金"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"
+        android:textColor="#000000"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <EditText
+            android:id="@+id/money"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="个人年龄"
+        android:textSize="20sp"
+        android:textColor="#000000"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <EditText
+            android:id="@+id/age"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:text="职业类型"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"
+        android:textColor="#000000"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:id="@+id/zhiye"
+        android:textSize="20sp"
+        android:layout_height="wrap_content">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="服务业"
+                android:id="@+id/b"
+                />
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="金融业"
+                android:id="@+id/c"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="学生党"
+                android:id="@+id/d"/>
+            />
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="IT互联网"
+                android:id="@+id/e"/>
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="其他"
+                android:id="@+id/i"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="个人性别"
+        android:textSize="20sp"
+        android:textColor="#000000"/>
+
+    <RadioGroup
+        android:id="@+id/xingbie"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal">
+        <RadioButton
+            android:id="@+id/nan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:layout_marginTop="10dp"
+            android:text="男"/>
+
+        <RadioButton
+            android:id="@+id/nv"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="女"/>
+        <RadioButton
+            android:id="@+id/buxian"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="不限"/>
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/paddingx2">
+
+        <Button
+            android:id="@+id/que"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="提交"
+            android:onClick="OnMyqueClick"
+            android:layout_weight="1"
+            android:textSize="30dp"
+            android:background="@drawable/btn_search_bg"
+            android:textColor="@color/color_white"/>
+    </LinearLayout>
+
+
+
+</LinearLayout>

@@ -22,13 +22,13 @@ import com.example.thefirstmove.util.pubFun;
 public class RegistActivity extends AppCompatActivity {
     private EditText editPhone;
     private EditText editPwd;
-    private Button  btnRegist;
+
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.regist);
         editPhone = findViewById(R.id.editPhone);
         editPwd = findViewById(R.id.editPwd);
-        btnRegist = findViewById(R.id.btnRegist);
+        Button btnRegist = findViewById(R.id.btnRegist);
     }
 
     /**
