@@ -32,11 +32,24 @@ import com.example.thefirstmove.hezu.HezuxinxiActivity;
 import com.example.thefirstmove.hezu.SearchActivity;
 import com.example.thefirstmove.hezu.SearchAdapter;
 
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+
 public class LodgerActivity extends AppCompatActivity {
+
+
+    /**
+     * 搜索结果列表view
+     */
+    private ListView lvResults;
+
+    /**
+     * 搜索view
+     */
+
 
 
 
@@ -44,7 +57,7 @@ public class LodgerActivity extends AppCompatActivity {
     /**
      * 搜索结果列表view
      */
-    private ListView lvResults;
+
     private Button tijiao;
     private SearchActivity s;
     private SimpleCursorAdapter adapter = null;
@@ -53,6 +66,7 @@ public class LodgerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_lodger);
+
         s = new SearchActivity();
 
         lvResults = (ListView) findViewById(R.id.main_lv_search_results);
@@ -95,4 +109,6 @@ public void OnMyqueClick(View v) {
         Intent intent = new Intent(LodgerActivity.this, SearchActivity.class);
         LodgerActivity.this.startActivity(intent);
     }
+
+
 }
