@@ -20,6 +20,30 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="称呼"
+        android:textSize="20sp"
+        android:textColor="#000000"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <EditText
+            android:id="@+id/mingzi"
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:ems="10"
+            android:inputType="text" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
         android:layout_marginBottom="10dp"
         android:text="入住区域"
         android:layout_marginTop="10dp"
@@ -66,7 +90,7 @@
         <EditText
             android:id="@+id/money"
             android:layout_width="70dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:ems="10"
             android:inputType="number" />
 
@@ -90,7 +114,7 @@
         <EditText
             android:id="@+id/age"
             android:layout_width="70dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:ems="10"
             android:inputType="number" />
 

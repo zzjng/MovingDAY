@@ -71,7 +71,9 @@
         <activity
             android:name=".LodgerActivity"
             android:exported="true" />
-
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

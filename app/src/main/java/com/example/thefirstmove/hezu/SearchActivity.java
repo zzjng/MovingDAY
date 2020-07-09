@@ -1,46 +1,30 @@
 package com.example.thefirstmove.hezu;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cursoradapter.widget.CursorAdapter;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.SimpleAdapter;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
-import android.widget.TableLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.thefirstmove.LodgerActivity;
-import com.example.thefirstmove.MainActivity;
 import com.example.thefirstmove.R;
 import com.example.thefirstmove.dao.DBOpenHelper;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -57,10 +41,8 @@ public class SearchActivity extends AppCompatActivity {
     ArrayAdapter<String> cityAdapter = null;    //地级适配器
     ArrayAdapter<String> countyAdapter = null;    //县级适配器
     static int provincePosition = 3;
-    private Spinner spsheng;
 
-    private Button btnBack;//返回按钮
-    private Context mContext;// 上下文对象
+
     private ListView lvTips;//弹出列表
     private ArrayAdapter<String> mHintAdapter;//提示adapter （推荐adapter）
     private ArrayAdapter<String> mAutoCompleteAdapter;//自动补全adapter 只显示名字
@@ -115,12 +97,11 @@ public class SearchActivity extends AppCompatActivity {
             };
 
 private Cursor c;
-private ListView lvtips;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-
         provinceSpinner = (Spinner) findViewById(R.id.spin_province);
         countySpinner = (Spinner) findViewById(R.id.spin_county);
         citySpinner = (Spinner) findViewById(R.id.spin_city);
@@ -132,11 +113,13 @@ private ListView lvtips;
         quxiao = (Button) findViewById(R.id.quxiao);
         sure = (Button) findViewById(R.id.queren);
 
-        btnBack = (Button) findViewById(R.id.search_btn_back);
+
 //        LayoutInflater factory = LayoutInflater.from(SearchActivity.this);
 //        View layout = factory.inflate(R.layout.activity_lodger, null);
 //        ListView lvTips = (ListView) layout.findViewById(R.id.main_lv_search_results);
-        lvTips = (ListView) findViewById(R.id.results);
+
+
+//        lvTips = (ListView) findViewById(R.id.results);
 
 //        lvTips.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //            @Override
@@ -270,11 +253,9 @@ private ListView lvtips;
 
         //数据库
         //call DBOpenHelper
-        DBOpenHelper helper = new DBOpenHelper(this, "movingday.db", null, 1);
+        DBOpenHelper helper = new DBOpenHelper(this, "movingday.db", null, 3);
         SQLiteDatabase db = helper.getReadableDatabase();
         c= db.query("hezu_tb", null, " province=? and country=? and city=? and xingbie=? and zhiye=? and zujin>? and zujin<? and nianling>? and nianling<? ", new String[]{provinceSpinner.getSelectedItem().toString(), countySpinner.getSelectedItem().toString(), citySpinner.getSelectedItem().toString(), gend, job, monmin.getText().toString(), monmax.getText().toString(), agmin.getText().toString(), agmax.getText().toString()}, null, null, null);
-
-
         if (c != null && c.getCount() >= 1) {
 
 //            LayoutInflater factory = LayoutInflater.from(SearchActivity.this);
@@ -289,12 +270,37 @@ private ListView lvtips;
 //            Intent i = new Intent(SearchActivity.this , LodgerActivity.class);
 //              startActivity(i);
 //显示数据listview
-            adapter = new SimpleCursorAdapter(this,
-                    R.layout.activity_search,//R.layout.activity_lodger
-                    c,
-                    new String[]{"province", "country", "city", "zujin", "nianling", "zhiye", "xingbie"},//游标数据的名称，实际是Table列名字
-                    new int[]{R.id.results}, 0);//对应的UI微件的id  R.id.main_lv_search_results
-            lvTips.setAdapter(adapter);
+//            adapter = new SimpleCursorAdapter(this,
+//                    R.layout.list,//R.layout.activity_lodger
+//                    c,
+//                    new String[]{"mingzi","province", "country", "city", "zujin", "nianling", "zhiye", "xingbie"},//游标数据的名称，实际是Table列名字
+//                    new int[]{R.id.name,R.id.sheng,R.id.shi,R.id.qu,R.id.jin,R.id.year,R.id.ye,R.id.xing}, 0);//对应的UI微件的id  R.id.main_lv_search_results
+//
+            List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
+            Map<String,Object> map;
+//遍历数据
+            while (c.moveToNext())
+            {
+                map = new HashMap<String, Object>();
+                map.put("mingzi",c.getString(c.getColumnIndex("mingzi")));
+                map.put("province",c.getString(c.getColumnIndex("province")));
+                map.put("country",c.getString(c.getColumnIndex("country")));
+                map.put("city",c.getString(c.getColumnIndex("city")));
+                map.put("zujin",c.getString(c.getColumnIndex("zujin")));
+                map.put("nianling",c.getString(c.getColumnIndex("nianling")));
+                map.put("zhiye",c.getString(c.getColumnIndex("zhiye")));
+                map.put("xingbie",c.getString(c.getColumnIndex("xingbie")));
+                list.add(map);
+            }
+            SimpleAdapter    a = new SimpleAdapter(this,list,R.layout.list,new String[]{"mingzi","province", "country", "city", "zujin", "nianling", "zhiye", "xingbie"},
+                    new int[]{R.id.name,R.id.sheng,R.id.shi,R.id.qu,R.id.jin,R.id.year,R.id.ye,R.id.xing});
+
+
+
+
+            Toast.makeText(this, "正在搜索", Toast.LENGTH_SHORT).show();
+            lvTips.setAdapter(a);
+
         } else {
             Toast.makeText(this, "未搜索到合适室友！", Toast.LENGTH_SHORT).show();
         }

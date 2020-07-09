@@ -46,17 +46,6 @@ public class LodgerActivity extends AppCompatActivity {
      */
     private ListView lvResults;
 
-    /**
-     * 搜索view
-     */
-
-
-
-
-
-    /**
-     * 搜索结果列表view
-     */
 
     private Button tijiao;
     private SearchActivity s;
@@ -69,7 +58,6 @@ public class LodgerActivity extends AppCompatActivity {
 
         s = new SearchActivity();
 
-        lvResults = (ListView) findViewById(R.id.main_lv_search_results);
 //        Intent intent = getIntent();
 //        String id = intent.getStringExtra("id");
         tijiao=findViewById(R.id.tijiaoxinxi);

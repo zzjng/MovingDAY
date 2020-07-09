@@ -33,6 +33,7 @@ public class HezuxinxiActivity extends AppCompatActivity {
     private RadioGroup xingbie;
     private EditText money;
     private EditText age;
+    private EditText mingzi;
     private LinearLayout zhiye;
     private Button que;
     private Spinner provinceSpinner = null;  //省级（省、直辖市）
@@ -93,6 +94,7 @@ private String gender;
 
         money = (EditText) findViewById(R.id.money);
         age = (EditText) findViewById(R.id.age);
+        mingzi = (EditText) findViewById(R.id.mingzi);
         zhiye = (LinearLayout) findViewById(R.id.zhiye);
         xingbie = (RadioGroup) findViewById(R.id.xingbie);
 
@@ -193,7 +195,7 @@ private String gender;
 
         //数据库
         //call DBOpenHelper
-        DBOpenHelper helper = new DBOpenHelper(this, "movingday.db", null, 1);
+        DBOpenHelper helper = new DBOpenHelper(this, "movingday.db", null,3);
         SQLiteDatabase db = helper.getWritableDatabase();
         boolean isTrue = true;
         if (pubFun.isEmpty(countySpinner.getSelectedItem().toString()) || pubFun.isEmpty(citySpinner.getSelectedItem().toString())||pubFun.isEmpty(provinceSpinner.getSelectedItem().toString())) {
@@ -223,11 +225,12 @@ private String gender;
 
         if(isTrue = true){
             //call DBOpenHelper
-             helper = new DBOpenHelper(this,"movingday.db",null,1);
+             helper = new DBOpenHelper(this,"movingday.db",null,3);
             db = helper.getWritableDatabase();
             Cursor c = db.query("hezu_tb", null, "province=? and country=? and city=? and zujin=? and nianling=? and zhiye=? and xingbie=?", new String[]{provinceSpinner.getSelectedItem().toString(),countySpinner.getSelectedItem().toString(),citySpinner.getSelectedItem().toString(), money.getText().toString(), age.getText().toString(),sb.toString(), gender}, null, null, null);
                //insert data
                 ContentValues values= new ContentValues();
+                values.put("mingzi", mingzi.getText().toString());
                 values.put("province",provinceSpinner.getSelectedItem().toString());
                 values.put("country",countySpinner.getSelectedItem().toString());
                 values.put("city",citySpinner.getSelectedItem().toString());
