@@ -40,7 +40,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".hezu.SearchActivity"></activity>
+        <activity android:name=".WeChatActivity"></activity>
+        <activity android:name=".hezu.SearchActivity" />
         <activity android:name=".hezu.HezuxinxiActivity" />
         <activity android:name=".ChoosePoiActivity" />
         <activity android:name=".SetFavAddressActivity" />

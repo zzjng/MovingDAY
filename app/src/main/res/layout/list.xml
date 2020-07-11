@@ -4,109 +4,147 @@
     android:layout_height="match_parent"
     android:orientation="horizontal">
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="15dp">
+        <ImageView
+            android:id="@+id/Header"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="3dp"
+            android:contentDescription="@string/Description"
+            android:src="@drawable/header" />
 
-        <TextView
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:id="@+id/name"
-            android:layout_marginRight="30dp"
-            android:textSize="20sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="vertical"
+        android:background="@drawable/listbck">
+
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="5dp"
         android:layout_height="20dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="称呼"
+            android:layout_marginRight="7dp"
+            android:textSize="@dimen/small_font_size"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/name"
+            android:layout_marginRight="10dp"
+            android:textSize="@dimen/normal_font_size"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="年龄"
+            android:layout_marginRight="7dp"
             android:textSize="@dimen/small_font_size"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/year"
-            android:layout_weight="1"
+            android:layout_marginRight="10dp"
             android:textSize="@dimen/normal_font_size"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="性别"
+            android:layout_marginRight="7dp"
             android:textSize="@dimen/small_font_size"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
             android:id="@+id/xing"
-            android:layout_weight="1"
             android:textSize="@dimen/normal_font_size"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="7dp"
             android:text="职业"
             android:textSize="@dimen/small_font_size"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/ye"
-            android:layout_weight="1"
+            android:layout_marginRight="10dp"
             android:textSize="@dimen/normal_font_size"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="理想价位"
-            android:layout_weight="1"
+            android:layout_marginRight="7dp"
             android:textSize="@dimen/small_font_size"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/jin"
+            android:layout_marginRight="10dp"
             android:textSize="@dimen/normal_font_size"/>
     </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="7dp"
             android:orientation="horizontal">
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="省"
-                android:textSize="@dimen/small_font_size" />
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="20dp"
+                android:text="地址"
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/sheng"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_marginRight="8dp"
                 android:textSize="@dimen/normal_font_size" />
-
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:text="省"
+                android:textSize="@dimen/small_font_size" />
+            <TextView
+                android:id="@+id/qu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:textSize="@dimen/normal_font_size" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="市"
+                android:layout_marginRight="15dp"
                 android:textSize="@dimen/small_font_size" />
+
 
             <TextView
                 android:id="@+id/shi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_marginRight="8dp"
                 android:textSize="@dimen/normal_font_size" />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="区"
+                android:text="区/县"
+                android:layout_marginRight="15dp"
                 android:textSize="@dimen/small_font_size" />
 
-            <TextView
-                android:id="@+id/qu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="@dimen/normal_font_size" />
+
         </LinearLayout>
 </LinearLayout>
 </LinearLayout>

@@ -2,6 +2,9 @@ package com.example.thefirstmove.hezu;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -20,8 +23,11 @@ import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.thefirstmove.LodgerActivity;
+import com.example.thefirstmove.MainActivity;
 import com.example.thefirstmove.R;
 import com.example.thefirstmove.dao.DBOpenHelper;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,6 +36,7 @@ import java.util.Map;
 
 public class SearchActivity extends AppCompatActivity {
 
+    private static Cursor c;
     private EditText monmin;
     private EditText monmax;
     private EditText agmin;
@@ -53,12 +60,24 @@ public class SearchActivity extends AppCompatActivity {
     private Button sure;
     private String gend;
     public String job;
-    private SimpleCursorAdapter adapter = null;
+    private SimpleAdapter adapter = null;
     /**
      * 设置搜索回调接口
      *
      * @param监听者
      */
+
+
+
+    static public  Cursor getcursor() {
+        return c;
+    }
+
+    public void setcursor(Cursor cursor) {
+        this.c = (Cursor) cursor;
+    }
+
+
 
     //省级选项值
     private String[] province = new String[]{"北京", "上海", "天津", "广东"};//,"重庆","黑龙江","江苏","山东","浙江","香港","澳门"};
@@ -90,13 +109,13 @@ public class SearchActivity extends AppCompatActivity {
                             {"无"}, {"无"}, {"无"}, {"无"}, {"无"}, {"无"}, {"无"}, {"无"}, {"无"}, {"无"}
                     },
                     {    //广东
-                            {"海珠区", "荔湾区", "越秀区", "白云区", "萝岗区", "天河区", "黄埔区", "花都区", "从化市", "增城市", "番禺区", "南沙区"}, //广州
-                            {"宝安区", "福田区", "龙岗区", "罗湖区", "南山区", "盐田区"}, //深圳
-                            {"武江区", "浈江区", "曲江区", "乐昌市", "南雄市", "始兴县", "仁化县", "翁源县", "新丰县", "乳源县"}  //韶关
+                            {"海珠", "荔湾", "越秀", "白云", "萝岗", "天河", "黄埔", "花都", "从化市", "增城市", "番禺", "南沙"}, //广州
+                            {"宝安", "福田", "龙岗", "罗湖", "南山", "盐田"}, //深圳
+                            {"武江", "浈江", "曲江", "乐昌", "南雄市", "始兴县", "仁化县", "翁源县", "新丰县", "乳源县"}  //韶关
                     }
             };
 
-private Cursor c;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,7 +131,7 @@ private Cursor c;
         zhiye = (LinearLayout) findViewById(R.id.zhiyeleixing);
         quxiao = (Button) findViewById(R.id.quxiao);
         sure = (Button) findViewById(R.id.queren);
-
+        // lvTips= (ListView) View.inflate(this,R.layout.activity_lodger,null).findViewById(R.id.show1);
 
 //        LayoutInflater factory = LayoutInflater.from(SearchActivity.this);
 //        View layout = factory.inflate(R.layout.activity_lodger, null);
@@ -256,63 +275,57 @@ private Cursor c;
         DBOpenHelper helper = new DBOpenHelper(this, "movingday.db", null, 3);
         SQLiteDatabase db = helper.getReadableDatabase();
         c= db.query("hezu_tb", null, " province=? and country=? and city=? and xingbie=? and zhiye=? and zujin>? and zujin<? and nianling>? and nianling<? ", new String[]{provinceSpinner.getSelectedItem().toString(), countySpinner.getSelectedItem().toString(), citySpinner.getSelectedItem().toString(), gend, job, monmin.getText().toString(), monmax.getText().toString(), agmin.getText().toString(), agmax.getText().toString()}, null, null, null);
-        if (c != null && c.getCount() >= 1) {
 
-//            LayoutInflater factory = LayoutInflater.from(SearchActivity.this);
-//            View layout = factory.inflate(R.layout.activity_lodger, null);
-//            ListView LR = (ListView) layout.findViewById(R.id.main_lv_search_results);
 
-//            int resId = getResources().getIdentifier("activity_lodger", "layout",getPackageName());
-//            Log.i("res",Integer.toString(resId));
-//            int Id = getResources().getIdentifier("main_lv_search_results", "id",getPackageName());
-//            Log.i("res",Integer.toString(Id));
-
-//            Intent i = new Intent(SearchActivity.this , LodgerActivity.class);
-//              startActivity(i);
-//显示数据listview
-//            adapter = new SimpleCursorAdapter(this,
-//                    R.layout.list,//R.layout.activity_lodger
-//                    c,
-//                    new String[]{"mingzi","province", "country", "city", "zujin", "nianling", "zhiye", "xingbie"},//游标数据的名称，实际是Table列名字
-//                    new int[]{R.id.name,R.id.sheng,R.id.shi,R.id.qu,R.id.jin,R.id.year,R.id.ye,R.id.xing}, 0);//对应的UI微件的id  R.id.main_lv_search_results
+                if (c != null && c.getCount() >= 1) {
 //
-            List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
-            Map<String,Object> map;
-//遍历数据
-            while (c.moveToNext())
-            {
-                map = new HashMap<String, Object>();
-                map.put("mingzi",c.getString(c.getColumnIndex("mingzi")));
-                map.put("province",c.getString(c.getColumnIndex("province")));
-                map.put("country",c.getString(c.getColumnIndex("country")));
-                map.put("city",c.getString(c.getColumnIndex("city")));
-                map.put("zujin",c.getString(c.getColumnIndex("zujin")));
-                map.put("nianling",c.getString(c.getColumnIndex("nianling")));
-                map.put("zhiye",c.getString(c.getColumnIndex("zhiye")));
-                map.put("xingbie",c.getString(c.getColumnIndex("xingbie")));
-                list.add(map);
-            }
-            SimpleAdapter    a = new SimpleAdapter(this,list,R.layout.list,new String[]{"mingzi","province", "country", "city", "zujin", "nianling", "zhiye", "xingbie"},
-                    new int[]{R.id.name,R.id.sheng,R.id.shi,R.id.qu,R.id.jin,R.id.year,R.id.ye,R.id.xing});
+//
+//
+                    Intent i = new Intent(SearchActivity.this, LodgerActivity.class);
+                    startActivity(i);
 
 
-
-
-            Toast.makeText(this, "正在搜索", Toast.LENGTH_SHORT).show();
-            lvTips.setAdapter(a);
-
+////显示数据listview
+////            adapter = new SimpleCursorAdapter(this,
+////                    R.layout.list,//R.layout.activity_lodger
+////                    c,
+////                    new String[]{"mingzi","province", "country", "city", "zujin", "nianling", "zhiye", "xingbie"},//游标数据的名称，实际是Table列名字
+////                    new int[]{R.id.name,R.id.sheng,R.id.shi,R.id.qu,R.id.jin,R.id.year,R.id.ye,R.id.xing}, 0);//对应的UI微件的id  R.id.main_lv_search_results
+////
+//            List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
+//            Map<String,Object> map;
+////遍历数据
+//            while (c.moveToNext())
+//            {
+//                map = new HashMap<String, Object>();
+//                map.put("mingzi",c.getString(c.getColumnIndex("mingzi")));
+//                map.put("province",c.getString(c.getColumnIndex("province")));
+//                map.put("country",c.getString(c.getColumnIndex("country")));
+//                map.put("city",c.getString(c.getColumnIndex("city")));
+//                map.put("zujin",c.getString(c.getColumnIndex("zujin")));
+//                map.put("nianling",c.getString(c.getColumnIndex("nianling")));
+//                map.put("zhiye",c.getString(c.getColumnIndex("zhiye")));
+//                map.put("xingbie",c.getString(c.getColumnIndex("xingbie")));
+//                list.add(map);
+//            }
+//            SimpleAdapter    a = new SimpleAdapter(this,list,R.layout.list,new String[]{"mingzi","province", "country", "city", "zujin", "nianling", "zhiye", "xingbie"},
+//                    new int[]{R.id.name,R.id.sheng,R.id.shi,R.id.qu,R.id.jin,R.id.year,R.id.ye,R.id.xing});
+//
+//
+//            lvTips.setAdapter(a);
+//
         } else {
             Toast.makeText(this, "未搜索到合适室友！", Toast.LENGTH_SHORT).show();
         }
+//
+//    }
 
-    }
 
-    public  Cursor getcursor(){
-        return c;
-    }
 
 
 }
+
+    }
 
 
 

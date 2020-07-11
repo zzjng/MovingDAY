@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
+import android.widget.SimpleAdapter;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -31,9 +32,12 @@ import com.example.thefirstmove.hezu.CommonAdapter;
 import com.example.thefirstmove.hezu.HezuxinxiActivity;
 import com.example.thefirstmove.hezu.SearchActivity;
 import com.example.thefirstmove.hezu.SearchAdapter;
+import com.google.gson.Gson;
 
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -44,48 +48,74 @@ public class LodgerActivity extends AppCompatActivity {
     /**
      * 搜索结果列表view
      */
-    private ListView lvResults;
+
 
 
     private Button tijiao;
-    private SearchActivity s;
-    private SimpleCursorAdapter adapter = null;
 
+    private SimpleCursorAdapter adapter = null;
+private Cursor c;
+private ListView lvTips;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_lodger);
 
-        s = new SearchActivity();
-
-//        Intent intent = getIntent();
-//        String id = intent.getStringExtra("id");
         tijiao=findViewById(R.id.tijiaoxinxi);
+        lvTips=findViewById(R.id.show1);
 
-//        Log.v("debug", "s.getcursor().getColumnNames()");
-//        lvResults.setOnItemClickListener(new ListView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,long arg3) {
-////                Intent intent = new Intent(LodgerActivity.this,LodgerActivity.class);//OrderActivity.this,当前页面，DaiActivity.class转至du的页面
-//////item内的数据保存在zhimap中
-////                Map<String, String> map = (Map<String, String>)lvResults.getItemAtPosition(arg2);
-//////需要的数据在intent中
-////                intent.putExtra("id", map.get("Id"));
-//////跳转页面
-////                LodgerActivity.this.startActivity(intent);
-//            }
-//        });
-//显示数据
-//        adapter = new SimpleCursorAdapter(this,
-//                R.layout.activity_lodger,//R.layout.activity_lodger
-//                s.getcursor(),
-//                new String[]{"province", "country", "city", "zujin", "nianling", "zhiye", "xingbie"},//游标数据的名称，实际是Table列名字
-//                new int[]{R.id.main_lv_search_results}, 0);//对应的UI微件的id  R.id.main_lv_search_results
-//        lvResults.setAdapter(adapter);
+        c=SearchActivity.getcursor();
 
- //       s.getcursor().close();
-//
-//        this.finish();
+        if (c != null && c.getCount() >= 1){
+            show();
+        }else{
+            Toast.makeText(this, "未传递数据！", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    public void show() {
+
+
+
+        if (c != null && c.getCount() >= 1) {
+
+            List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+            Map<String, Object> map;
+//遍历数据
+            while (c.moveToNext()) {
+                map = new HashMap<String, Object>();
+                map.put("mingzi", c.getString(c.getColumnIndex("mingzi")));
+                map.put("province", c.getString(c.getColumnIndex("province")));
+                map.put("country", c.getString(c.getColumnIndex("country")));
+                map.put("city", c.getString(c.getColumnIndex("city")));
+                map.put("zujin", c.getString(c.getColumnIndex("zujin")));
+                map.put("nianling", c.getString(c.getColumnIndex("nianling")));
+                map.put("zhiye", c.getString(c.getColumnIndex("zhiye")));
+                map.put("xingbie", c.getString(c.getColumnIndex("xingbie")));
+                list.add(map);
+            }
+            SimpleAdapter a = new SimpleAdapter(this, list, R.layout.list, new String[]{"mingzi", "province", "country", "city", "zujin", "nianling", "zhiye", "xingbie"},
+                    new int[]{R.id.name, R.id.sheng, R.id.shi, R.id.qu, R.id.jin, R.id.year, R.id.ye, R.id.xing});
+            lvTips.setAdapter(a);
+               lvTips.setOnItemClickListener(new ListView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,long arg3) {
+
+//item内的数据保存在zhimap中
+                Map<String, String> map = (Map<String, String>)lvTips.getItemAtPosition(arg2);
+//需要的数据在intent中
+
+//跳转页面
+                Intent intent = new Intent(LodgerActivity.this,WeChatActivity.class);//OrderActivity.this,当前页面，DaiActivity.class转至du的页面
+                LodgerActivity.this.startActivity(intent);
+            }
+        });
+
+        } else {
+            Toast.makeText(this, "未搜索到合适室友！", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
 public void OnMyqueClick(View v) {
@@ -99,4 +129,6 @@ public void OnMyqueClick(View v) {
     }
 
 
+    public void method() {
+    }
 }

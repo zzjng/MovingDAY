@@ -1,0 +1,51 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".WeChatActivity" >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+         >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/Title"
+            android:textColor="#000000"
+            android:textSize="30sp" />
+    </RelativeLayout>
+    <ListView
+        android:id="@+id/MainList"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:divider="#ffffff"
+        android:layout_weight="0.25" >
+    </ListView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+
+        android:gravity="bottom" >
+        <EditText
+            android:id="@+id/InputBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:textColor="#000000"
+            android:inputType="text" >
+            <requestFocus />
+        </EditText>
+        <Button
+            android:id="@+id/BtnSend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="发送"
+            android:textColor="#ffffff"/>
+
+    </LinearLayout>
+</LinearLayout>
