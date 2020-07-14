@@ -1,9 +1,5 @@
 package com.example.thefirstmove.hezu;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -19,20 +15,14 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SimpleAdapter;
-import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.thefirstmove.LodgerActivity;
-import com.example.thefirstmove.MainActivity;
 import com.example.thefirstmove.R;
 import com.example.thefirstmove.dao.DBOpenHelper;
-import com.google.gson.Gson;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class SearchActivity extends AppCompatActivity {
 
@@ -109,7 +99,7 @@ public class SearchActivity extends AppCompatActivity {
                             {"无"}, {"无"}, {"无"}, {"无"}, {"无"}, {"无"}, {"无"}, {"无"}, {"无"}, {"无"}
                     },
                     {    //广东
-                            {"海珠", "荔湾", "越秀", "白云", "萝岗", "天河", "黄埔", "花都", "从化市", "增城市", "番禺", "南沙"}, //广州
+                            {"海珠区", "荔湾", "越秀", "白云", "萝岗", "天河", "黄埔", "花都", "从化市", "增城市", "番禺", "南沙"}, //广州
                             {"宝安", "福田", "龙岗", "罗湖", "南山", "盐田"}, //深圳
                             {"武江", "浈江", "曲江", "乐昌", "南雄市", "始兴县", "仁化县", "翁源县", "新丰县", "乳源县"}  //韶关
                     }

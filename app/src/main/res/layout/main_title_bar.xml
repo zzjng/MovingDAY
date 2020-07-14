@@ -18,7 +18,10 @@
         android:layout_height="50dp"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
-        android:background="@drawable/btn_blue_selector"/>
+        android:background="@drawable/btn_blue_selector"
+        android:text="返回"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"/>
     <!--设置id为android:id="@+id/tv_main_title-->
     <!--该TextView为显示文本-->
     <!--layout_centerInparent为居中显示-->

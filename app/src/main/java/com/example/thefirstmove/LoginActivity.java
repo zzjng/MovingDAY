@@ -51,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
 
 //数据库
         //call DBOpenHelper
-        DBOpenHelper helper = new DBOpenHelper(this, "movingday.db", null, 1);
+        DBOpenHelper helper = new DBOpenHelper(this, "movingday.db", null, 3);
         SQLiteDatabase db = helper.getWritableDatabase();
         Cursor c = db.query("user_tb", null, "userID=? and pwd=?", new String[]{editPhone.getText().toString(), editPwd.getText().toString()}, null, null, null);
         if (c != null && c.getCount() >= 1) {
@@ -63,8 +63,6 @@ public class LoginActivity extends AppCompatActivity {
             }
             c.close();
             db.close();
-
-
 
             //将登陆用户信息存储到SharedPreferences中
             SharedPreferences mySharedPreferences = getSharedPreferences("setting", Activity.MODE_PRIVATE); //实例化SharedPreferences对象

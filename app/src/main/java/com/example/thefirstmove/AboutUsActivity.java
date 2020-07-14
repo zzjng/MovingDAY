@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class AboutUsActivity extends AppCompatActivity {
     private AU_AFragment aFragment;
     private AU_BFragment bFragment;
+    private AU_CFragment cFragment;
     private AU_Fragment Fragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,16 @@ public class AboutUsActivity extends AppCompatActivity {
                     bFragment=new AU_BFragment();
                 }
                 getSupportFragmentManager().beginTransaction().replace(R.id.container,bFragment).commitAllowingStateLoss();
+            }
+        });
+        Button Third=(Button)findViewById(R.id.third);
+        Third.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(cFragment==null){
+                    cFragment=new AU_CFragment();
+                }
+                getSupportFragmentManager().beginTransaction().replace(R.id.container,cFragment).commitAllowingStateLoss();
             }
         });
     }

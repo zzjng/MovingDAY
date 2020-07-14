@@ -30,12 +30,23 @@
         <EditText
             android:id="@+id/chat_input_message"
             android:layout_width="240dp"
-            android:background="#F8F8FF"
             android:layout_height="50dp"
             android:layout_centerVertical="true"
             android:layout_marginRight="5dp"
+            android:background="#F8F8FF"
             android:gravity="center" />
+        <!--语音识别按钮-->
         <!-- 发送按钮 -->
+        <Button
+            android:id="@+id/button_input"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/chat_input_message"
+            android:background="@drawable/speech"
+            android:onClick="startSpeechClick" />
+
         <Button
             android:background="#B0C4DE"
             android:id="@+id/send"
@@ -43,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/chat_input_message"
+            android:layout_toRightOf="@id/button_input"
             android:text="发送"
             android:textColor="#FFFFFF"
             android:textSize="18sp" />

@@ -40,6 +40,17 @@
         android:minHeight="32dp"
         android:background="@drawable/btn_blue_selector"
         android:text="成员2" />
+    <Button
+        android:id="@+id/third"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_weight="1"
+        android:textColor="#FFFFFFFF"
+        android:minWidth="120dp"
+        android:minHeight="32dp"
+        android:background="@drawable/btn_blue_selector"
+        android:text="联系我们" />
 </LinearLayout>
     <FrameLayout
         android:id="@+id/container"
