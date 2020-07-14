@@ -55,7 +55,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation files('libs/mysql-connector-java-8.0.16.jar')
     implementation 'com.android.support:support-annotations:22.0.0'
-
     //3D地图so及jar//navi导航SDK 5.0.0以后版本包含了3D地图SDK，所以请不要同时引入 map3d 和 navi SDK
     //implementation 'com.amap.api:3dmap:latest.integration'
     //定位功能
@@ -76,5 +75,5 @@ dependencies {
     //compileOnly 'com.amap.api:map2d:latest.integration'
     //google包
     //implementation 'com.google.code.gson:gson:2.8.6'
-
+    implementation files('libs/Msc.jar')
 }

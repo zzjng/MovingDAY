@@ -5,9 +5,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class SQLiteHelper extends SQLiteOpenHelper {
-    private static final int DB_VERSION = 1;
-    public static String DB_NAME = "bxg.db";
-    public static final String U_USER_INFO = "userInfo";
+    private static final int DB_VERSION = 1;//数据库版本
+    public static String DB_NAME = "gerenziliao.db";//数据库名称
+    public static final String U_USER_INFO = "userInfo";//个人资料
     public SQLiteHelper(Context context){
         super(context, DB_NAME, null, DB_VERSION);
     }

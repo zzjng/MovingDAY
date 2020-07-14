@@ -64,8 +64,6 @@ public class LoginActivity extends AppCompatActivity {
             c.close();
             db.close();
 
-
-
             //将登陆用户信息存储到SharedPreferences中
             SharedPreferences mySharedPreferences = getSharedPreferences("user", Activity.MODE_PRIVATE); //实例化SharedPreferences对象
             SharedPreferences.Editor editor = mySharedPreferences.edit();//实例化SharedPreferences.Editor对象

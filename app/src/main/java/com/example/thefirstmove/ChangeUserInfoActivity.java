@@ -26,7 +26,7 @@ public class ChangeUserInfoActivity extends AppCompatActivity implements View.On
     private EditText et_content;
     private ImageView iv_delete;
     private String title, content;
-    private int flag;  //flag为1时表示修改昵称，为2时表示修改签名，为3时表示修改QQ号
+    private int flag;  //flag为1时表示修改昵称，为2时表示修改介绍，为3时表示修改QQ号
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,7 +97,7 @@ public class ChangeUserInfoActivity extends AppCompatActivity implements View.On
                             Selection.setSelection(editable, selEndIndex);
                         }
                         break;
-                    case 2: //签名，做多16，
+                    case 2: //介绍，做多16，
                         if (len > 16) {
                             int selEndIndex = Selection.getSelectionEnd(editable);
                             String str = editable.toString();
@@ -167,7 +167,7 @@ public class ChangeUserInfoActivity extends AppCompatActivity implements View.On
                             Toast.makeText(this, "保存成功", Toast.LENGTH_SHORT).show();
                             ChangeUserInfoActivity.this.finish();
                         } else {
-                            Toast.makeText(this, "签名不能为空", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, "介绍不能为空", Toast.LENGTH_SHORT).show();
                         }
                         break;
                     case 3:

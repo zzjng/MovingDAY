@@ -140,7 +140,7 @@ private String phone;
                 String signature = tv_signature.getText().toString();
                 Bundle bdSignature = new Bundle();
                 bdSignature.putString("content", signature); //传递界面上的签名数据
-                bdSignature.putString("title", "签名");
+                bdSignature.putString("title", "介绍");
                 bdSignature.putInt("flag", 2);
                 //ActivityUserInfoActivity的Onclick()里昵称和签名响应加上跳转代码
                 enterActivityForResult(ChangeUserInfoActivity.class, CHANGE_SIGNATURE, bdSignature);
