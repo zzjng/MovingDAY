@@ -31,7 +31,6 @@
     <uses-permission android:name="android.permission.INTERNET" /> <!-- 用于读取手机当前的状态 -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 用于写入缓存数据到扩展存储卡 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 用于申请调用A-GPS模块 -->
-    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
 
     <application
         android:allowBackup="true"
@@ -41,11 +40,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".WeChatActivity"></activity>
+        <activity android:name=".HouseOwnerActivity"></activity>
+        <activity android:name=".RegistActivity"></activity>
         <activity android:name=".hezu.SearchActivity" />
+        <activity android:name=".UserInfoActivity" />
+        <activity android:name=".ResPwdActivity" />
         <activity android:name=".hezu.HezuxinxiActivity" />
         <activity android:name=".ChoosePoiActivity" />
         <activity android:name=".SetFavAddressActivity" />
         <activity android:name=".ChooseCityActivity" />
+        <activity android:name=".ChangeUserInfoActivity" />
+        <activity android:name=".ChatActivity" />
+        <activity android:name=".TTWeatherActivity" />
+
         <activity
             android:name=".TTMapActivity"
             android:exported="true" />

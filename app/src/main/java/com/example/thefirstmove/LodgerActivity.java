@@ -1,7 +1,9 @@
 package com.example.thefirstmove;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
@@ -42,6 +44,7 @@ import java.util.List;
 import java.util.Map;
 
 
+
 public class LodgerActivity extends AppCompatActivity {
 
 
@@ -63,6 +66,18 @@ private ListView lvTips;
 
         tijiao=findViewById(R.id.tijiaoxinxi);
         lvTips=findViewById(R.id.show1);
+
+        SharedPreferences sharedPreferences= getSharedPreferences("user", Context.MODE_PRIVATE);
+        String phone=sharedPreferences.getString("userID","");
+        if (phone==null){
+            Toast.makeText(this,"请先登录",Toast.LENGTH_SHORT).show();
+            finish();
+        }
+        else {
+            Toast.makeText(this,"欢迎",Toast.LENGTH_SHORT).show();
+        }
+
+
 
         c=SearchActivity.getcursor();
 
@@ -107,6 +122,8 @@ private ListView lvTips;
 //需要的数据在intent中
 
 //跳转页面
+
+
                 Intent intent = new Intent(LodgerActivity.this,WeChatActivity.class);//OrderActivity.this,当前页面，DaiActivity.class转至du的页面
                 LodgerActivity.this.startActivity(intent);
             }

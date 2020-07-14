@@ -54,7 +54,7 @@ public class ResPwdActivity extends AppCompatActivity {
         }
 
         //调用DBOpenHelper
-        DBOpenHelper helper = new DBOpenHelper(this,"movingday.db",null,1);
+        DBOpenHelper helper = new DBOpenHelper(this,"movingday.db",null,3);
         SQLiteDatabase db = helper.getWritableDatabase();
         Cursor c = db.query("user_tb",null,"userID=?",new String[]{editPhone.getText().toString()},null,null,null);
         if(c!=null && c.getCount() >= 1){
