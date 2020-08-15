@@ -129,7 +129,7 @@ private ListView lvTips;
         });
 
         } else {
-            Toast.makeText(this, "未搜索到合适室友！", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "未搜索到符合心意驴友！", Toast.LENGTH_SHORT).show();
         }
 
     }

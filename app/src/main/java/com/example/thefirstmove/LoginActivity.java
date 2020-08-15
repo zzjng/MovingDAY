@@ -69,6 +69,7 @@ public class LoginActivity extends AppCompatActivity {
             SharedPreferences.Editor editor = mySharedPreferences.edit();//实例化SharedPreferences.Editor对象
             editor.putString("userID", editPhone.getText().toString()); //用putString的方法保存数据
             editor.commit(); //提交当前数据
+            Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
 
             //传用户手机号到个人空间
             String phoneno=editPhone.getText().toString();

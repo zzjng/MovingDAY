@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="#eee"
+    android:background="@mipmap/bg3"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -9,25 +9,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="7dp"
         android:gravity="center"
-        android:text="提交合租个人信息"
+        android:text="我来当伴游"
         android:layout_marginTop="@dimen/paddingx2"
-        android:textSize="35dp"
+        android:textSize="30dp"
         android:textColor="#4169E1"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:gravity="center"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="7dp"
         android:text="称呼"
         android:textSize="20sp"
         android:textColor="#000000"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="7dp"
         android:orientation="horizontal"
         android:gravity="center">
         <EditText
@@ -44,15 +44,15 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:gravity="center"
-        android:layout_marginBottom="10dp"
-        android:text="入住区域"
+        android:layout_marginBottom="7dp"
+        android:text="旅游区域"
         android:layout_marginTop="10dp"
         android:textSize="20sp"
         android:textColor="#000000"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="7dp"
         android:orientation="horizontal">
         <Spinner
             android:id="@+id/province"
@@ -77,14 +77,14 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:gravity="center"
-        android:text="理想租金"
-        android:layout_marginTop="10dp"
+        android:text="旅游大概花费"
+        android:layout_marginTop="7dp"
         android:textSize="20sp"
         android:textColor="#000000"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="7dp"
         android:orientation="horizontal"
         android:gravity="center">
         <EditText
@@ -101,14 +101,14 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:text="个人年龄"
+        android:layout_marginTop="7dp"
+        android:text="我的个人年龄"
         android:textSize="20sp"
         android:textColor="#000000"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="7dp"
         android:orientation="horizontal"
         android:gravity="center">
         <EditText
@@ -125,8 +125,8 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:gravity="center"
-        android:text="职业类型"
-        android:layout_marginTop="10dp"
+        android:text="游玩类型"
+        android:layout_marginTop="7dp"
         android:textSize="20sp"
         android:textColor="#000000"/>
     <LinearLayout
@@ -138,30 +138,24 @@
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="服务业"
-                android:id="@+id/b"
-                />
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="金融业"
+                android:text="自驾游顺路捡人"
                 android:id="@+id/c"/>
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="学生党"
+                android:text="自驾游拼车"
                 android:id="@+id/d"/>
             />
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="IT互联网"
+                android:text="骑行结伴"
                 android:id="@+id/e"/>
 
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="其他"
+                android:text="背包客"
                 android:id="@+id/i"/>
 
     </LinearLayout>
@@ -170,7 +164,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="7dp"
         android:gravity="center"
         android:text="个人性别"
         android:textSize="20sp"
@@ -207,7 +201,7 @@
     <LinearLayout
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_marginTop="@dimen/paddingx2">
+        android:layout_marginTop="14dp">
 
         <Button
             android:id="@+id/que"

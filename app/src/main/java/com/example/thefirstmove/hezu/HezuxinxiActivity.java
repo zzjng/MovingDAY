@@ -199,12 +199,12 @@ private String gender;
         SQLiteDatabase db = helper.getWritableDatabase();
         boolean isTrue = true;
         if (pubFun.isEmpty(countySpinner.getSelectedItem().toString()) || pubFun.isEmpty(citySpinner.getSelectedItem().toString())||pubFun.isEmpty(provinceSpinner.getSelectedItem().toString())) {
-            Toast.makeText(this, "入住区域不能为空！", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "游区不能为空！", Toast.LENGTH_SHORT).show();
             return;
         }
         if(pubFun.isEmpty(money.getText().toString())){
             isTrue = false;
-            Toast.makeText(this, "租金不能为空！", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "旅游价位不能为空！", Toast.LENGTH_SHORT).show();
             return;
         }
         if(pubFun.isEmpty(age.getText().toString())){
@@ -214,7 +214,7 @@ private String gender;
         }
         if(pubFun.isEmpty(sb.toString())){
             isTrue = false;
-            Toast.makeText(this, "职业不能为空！", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "结伴方式不能为空！", Toast.LENGTH_SHORT).show();
             return;
         }
         if(pubFun.isEmpty(gender)){

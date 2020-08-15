@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#eee"
+    android:background="@mipmap/bg2"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -14,7 +14,8 @@
             android:layout_centerInParent="true"
             android:layout_marginBottom="20dp"
             android:gravity="center"
-            android:text="筛选"
+            android:text="我来找驴友"
+            android:textFontWeight="@android:integer/config_longAnimTime"
             android:layout_marginTop="10dp"
             android:textSize="35dp"
             android:textColor="#4169E1"/>
@@ -24,7 +25,7 @@
             android:layout_centerInParent="true"
             android:gravity="center"
             android:layout_marginBottom="10dp"
-            android:text="入住区域"
+            android:text="旅游区域"
             android:layout_marginTop="10dp"
             android:textSize="20sp"
             android:textColor="#000000"/>
@@ -56,7 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:text="租金范围"
+            android:text="旅游花费价格"
             android:layout_marginTop="10dp"
             android:textSize="20sp"
             android:textColor="#000000"/>
@@ -94,43 +95,48 @@
             android:layout_centerInParent="true"
             android:gravity="center"
 
-            android:text="年龄范围"
+            android:text="驴友年龄范围"
             android:textSize="20sp"
             android:textColor="#000000"/>
-        <LinearLayout
-            android:layout_width="match_parent"
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/agemin"
+            android:layout_width="70dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:orientation="horizontal"
-            android:gravity="center">
-            <EditText
-                android:id="@+id/agemin"
-                android:layout_width="70dp"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:layout_marginLeft="50dp"
-                android:inputType="number" />
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:text="——至——"
-                android:textSize="20dp"
-                android:textColor="#000000"/>
-            <EditText
-                android:id="@+id/agemax"
-                android:layout_width="70dp"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:layout_marginRight="50dp"
-                android:inputType="number" />
-        </LinearLayout>
+            android:layout_marginLeft="50dp"
+            android:ems="10"
+            android:inputType="number" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="——至——"
+            android:textColor="#000000"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/agemax"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="50dp"
+            android:baselineAligned="false"
+            android:ems="10"
+            android:inputType="number" />
+    </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:text="职业类型"
+            android:text="伴游类型"
             android:layout_marginTop="10dp"
             android:textSize="20sp"
             android:textColor="#000000"/>
@@ -139,34 +145,27 @@
             android:id="@+id/zhiyeleixing"
             android:textSize="20sp"
             android:layout_height="wrap_content">
-
+                <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="自驾游顺路捡人"
+                android:id="@+id/c"/>
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="服务业"
-                    android:id="@+id/b"
-                    />
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="金融业"
-                    android:id="@+id/c"/>
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="学生党"
+                    android:text="自驾游拼车"
                     android:id="@+id/d"/>
-                />
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="IT互联网"
+                    android:text="骑行结伴"
                     android:id="@+id/e"/>
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="其他"
+                    android:text="背包客"
                     android:id="@+id/i"/>
+
 
         </LinearLayout>
 
@@ -176,7 +175,7 @@
             android:layout_centerInParent="true"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:text="室友性别"
+            android:text="驴友性别"
             android:textSize="20sp"
             android:textColor="#000000"/>
 

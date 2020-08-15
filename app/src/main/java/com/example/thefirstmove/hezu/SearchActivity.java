@@ -315,7 +315,7 @@ public class SearchActivity extends AppCompatActivity {
 //            lvTips.setAdapter(a);
 //
         } else {
-            Toast.makeText(this, "未搜索到合适室友！", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "未搜索到符合心意的驴友！", Toast.LENGTH_SHORT).show();
         }
 //
 //    }
