@@ -69,6 +69,7 @@ private ListView lvTips;
 
         SharedPreferences sharedPreferences= getSharedPreferences("user", Context.MODE_PRIVATE);
         String phone=sharedPreferences.getString("userID","");
+
         if (phone==null){
             Toast.makeText(this,"请先登录",Toast.LENGTH_SHORT).show();
             finish();
@@ -76,8 +77,6 @@ private ListView lvTips;
         else {
             Toast.makeText(this,"欢迎",Toast.LENGTH_SHORT).show();
         }
-
-
 
         c=SearchActivity.getcursor();
 
