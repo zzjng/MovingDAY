@@ -123,6 +123,8 @@ private ListView lvTips;
 //跳转页面
 
                 Intent intent = new Intent(LodgerActivity.this,WeChatActivity.class);//OrderActivity.this,当前页面，DaiActivity.class转至du的页面
+                intent.putExtra("name", map.get("mingzi"));
+
                 LodgerActivity.this.startActivity(intent);
             }
         });
@@ -143,7 +145,4 @@ public void OnMyqueClick(View v) {
         LodgerActivity.this.startActivity(intent);
     }
 
-
-    public void method() {
-    }
 }

@@ -8,13 +8,12 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="#187C8F">
+        android:background="#0ADBF6">
         <TextView
-            android:id="@+id/text_room"
+            android:id="@+id/textname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="聊天室"
             android:textColor="#F3F4F5"
             android:textSize="20sp" />
     </androidx.appcompat.widget.Toolbar>
@@ -31,7 +30,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="45dp"
-
         android:gravity="bottom" >
         <EditText
             android:id="@+id/InputBox"
@@ -49,6 +47,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="发送"
+            android:textSize="25dp"
+            android:background="#31CD44"
             android:textColor="#ffffff"/>
 
     </LinearLayout>

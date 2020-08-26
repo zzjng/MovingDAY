@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -35,6 +36,7 @@ public class WeChatActivity extends AppCompatActivity implements View.OnClickLis
 
     private Button BtnSend;
     private EditText InputBox;
+    private  TextView textname;
     private List<WeChatMessage> mData = new ArrayList<>();
     private WeChatAdapter mAdapter;
     private  boolean isRunning=false;
@@ -79,6 +81,7 @@ public class WeChatActivity extends AppCompatActivity implements View.OnClickLis
                     //收到时间
                     message = new WeChatMessage(WeChatMessage.MessageType_Time,timMsg);//添加新时间的信息类型
                     mData.add(message);
+                    break;
                 default:break;
             }
 
@@ -91,10 +94,14 @@ public class WeChatActivity extends AppCompatActivity implements View.OnClickLis
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_chat1);
         InputBox=(EditText)findViewById(R.id.InputBox);
+        textname=(TextView)findViewById(R.id.textname);
         BtnSend=(Button)findViewById(R.id.BtnSend);
+        Intent intent =getIntent();
+        //getXxxExtra方法获取Intent传递过来的数据
+        String msg=intent.getStringExtra("data");
+        textname.setText(msg);
+
         BtnSend.setOnClickListener(this);
-
-
 
         runOnUiThread(new Runnable() {//执行UI更新操作
             @Override
@@ -194,7 +201,7 @@ public class WeChatActivity extends AppCompatActivity implements View.OnClickLis
             Calendar c=Calendar.getInstance();
             StringBuilder mBuilder=new StringBuilder();
             mBuilder.append(Integer.toString(c.get(Calendar.YEAR))+"年");
-            mBuilder.append(Integer.toString(c.get(Calendar.MONTH))+"月");
+            mBuilder.append(Integer.toString(c.get(Calendar.MONTH)+1)+"月");
             mBuilder.append(Integer.toString(c.get(Calendar.DATE))+"日");
             mBuilder.append(Integer.toString(c.get(Calendar.HOUR_OF_DAY))+":");
             mBuilder.append(Integer.toString(c.get(Calendar.MINUTE)));
@@ -229,7 +236,7 @@ public class WeChatActivity extends AppCompatActivity implements View.OnClickLis
                 Calendar c=Calendar.getInstance();
                 StringBuilder mBuilder=new StringBuilder();
                 mBuilder.append(Integer.toString(c.get(Calendar.YEAR))+"年");
-                mBuilder.append(Integer.toString(c.get(Calendar.MONTH))+"月");
+                mBuilder.append(Integer.toString(c.get(Calendar.MONTH)+1)+"月");
                 mBuilder.append(Integer.toString(c.get(Calendar.DATE))+"日");
                 mBuilder.append(Integer.toString(c.get(Calendar.HOUR_OF_DAY))+":");
                 mBuilder.append(Integer.toString(c.get(Calendar.MINUTE)));
@@ -282,8 +289,15 @@ public class WeChatActivity extends AppCompatActivity implements View.OnClickLis
                         mBuilder.append(Integer.toString(c.get(Calendar.HOUR_OF_DAY))+":");
                         mBuilder.append(Integer.toString(c.get(Calendar.MINUTE)));
                         //构造时间消息
-                      WeChatMessage Message=new WeChatMessage(WeChatMessage.MessageType_Time,mBuilder.toString());
-                        mData.add(Message);
+//                      WeChatMessage Message=new WeChatMessage(WeChatMessage.MessageType_Time,mBuilder.toString());
+//                        mData.add(Message);
+
+                    timMsg=mBuilder.toString();
+
+                    Message message=new Message();
+                    message.arg1=3;
+                    message.obj=timMsg;
+                    handler.sendMessage(message);
 
                     try {
                         dos.writeUTF(mBuilder.toString());
