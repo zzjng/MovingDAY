@@ -4,19 +4,21 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".WeChatActivity" >
-    <RelativeLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-         >
+        android:layout_height="?attr/actionBarSize"
+        android:background="#187C8F">
         <TextView
+            android:id="@+id/text_room"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:text="@string/Title"
-            android:textColor="#000000"
-            android:textSize="30sp" />
-    </RelativeLayout>
+            android:layout_gravity="center"
+            android:text="聊天室"
+            android:textColor="#F3F4F5"
+            android:textSize="20sp" />
+    </androidx.appcompat.widget.Toolbar>
+
     <ListView
         android:id="@+id/MainList"
         android:layout_width="match_parent"
@@ -24,6 +26,8 @@
         android:divider="#ffffff"
         android:layout_weight="0.25" >
     </ListView>
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="45dp"

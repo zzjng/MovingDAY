@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 
+apply plugin: 'com.mob.sdk'
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
@@ -29,10 +30,13 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+
     buildTypes {
         release {
+
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
         }
     }
     compileOptions {
@@ -71,9 +75,12 @@ dependencies {
     implementation project(path: ':AMapTripModule')
     implementation project(path: ':AMapPoiSearchModule')
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
-    //2D地图
-    //compileOnly 'com.amap.api:map2d:latest.integration'
-    //google包
-    //implementation 'com.google.code.gson:gson:2.8.6'
+
     implementation files('libs/Msc.jar')
+}
+// 在MobSDK的扩展中注册SMSSDK的相关信息
+MobSDK {
+    appKey "m308edbc4bfa04"
+    appSecret "31411b29bdc5e67b9e77c4c21f368038"
+    SMSSDK {gui false}
 }

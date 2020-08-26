@@ -21,6 +21,8 @@ public class WeChatAdapter extends BaseAdapter
         this.mData=data;
     }
 
+
+
     public void Refresh()
     {
         this.notifyDataSetChanged();
