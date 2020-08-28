@@ -34,7 +34,6 @@ public class ShareInfoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.share_info);
-
     }
     /**
      * 检查权限
