@@ -2,8 +2,10 @@ package com.example.thefirstmove;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -47,11 +49,11 @@ private String phone;
         setContentView(R.layout.activity_user_info);
         //
         TextView tv=(TextView)findViewById(R.id.tv_user_name);
-        Intent intent=getIntent();
-        Bundle bundle=getIntent().getExtras();
-        phone=bundle.getString("phone");
+        SharedPreferences sharedPreferences= getSharedPreferences("user", Context.MODE_PRIVATE);
+        String phone=sharedPreferences.getString("userID","");
+
         if (phone==null){
-            Toast.makeText(this,"对不起，您未登录",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"请先登录",Toast.LENGTH_SHORT).show();
             finish();
         }
         else {

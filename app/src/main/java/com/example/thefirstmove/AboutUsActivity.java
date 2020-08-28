@@ -1,8 +1,11 @@
 package com.example.thefirstmove;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,6 +18,16 @@ public class AboutUsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.about_us);
+        SharedPreferences sharedPreferences= getSharedPreferences("user", Context.MODE_PRIVATE);
+        String phone=sharedPreferences.getString("userID","");
+
+        if (phone==null){
+            Toast.makeText(this,"请先登录",Toast.LENGTH_SHORT).show();
+            finish();
+        }
+        else {
+            Toast.makeText(this,"欢迎",Toast.LENGTH_SHORT).show();
+        }
         Fragment =new AU_Fragment();
         //把Fragment添加到Activity中，记得调用commit
         getSupportFragmentManager().beginTransaction().add(R.id.container,Fragment).commitNowAllowingStateLoss();

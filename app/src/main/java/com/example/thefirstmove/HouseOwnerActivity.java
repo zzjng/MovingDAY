@@ -2,8 +2,10 @@ package com.example.thefirstmove;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -23,6 +25,7 @@ import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class HouseOwnerActivity extends AppCompatActivity {
@@ -34,23 +37,28 @@ public class HouseOwnerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.house_owner);
+        cameraPic=findViewById(R.id.CameraPic);
+        SharedPreferences sharedPreferences= getSharedPreferences("user", Context.MODE_PRIVATE);
+        String phone=sharedPreferences.getString("userID","");
+
+        if (phone==null){
+            Toast.makeText(this,"请先登录",Toast.LENGTH_SHORT).show();
+            finish();
+        }
+        else {
+            Toast.makeText(this,"欢迎",Toast.LENGTH_SHORT).show();
+        }
     }
     /**
      * 检查权限
      */
-    public void showimage(View view){
-        try {//将拍摄的照片显示出来
-            Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));
-            cameraPic.setImageBitmap(bitmap);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+
     public void click(View view)  {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED){
             //Toast.makeText(MainActivity.this,"您申请了动态权限",Toast.LENGTH_SHORT).show();
             //如果有了相机的权限有调用相机
             startCamera();
+
         }else{
             //否则去请求相机权限
             ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.CAMERA},100);
@@ -114,13 +122,24 @@ public void startSetting(){
 //当用户从设置页面回来的时候 还需要去 查询用户是否已经开启了 相机权限
 @Override
 protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    super.onActivityResult(requestCode, resultCode, data);
-    if (requestCode == 10  && resultCode == RESULT_OK){
-        if (ContextCompat.checkSelfPermission(HouseOwnerActivity.this,Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED){
-            Toast.makeText(HouseOwnerActivity.this,"非常感谢您的同意",Toast.LENGTH_SHORT).show();
-        }else{
+
+         super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 10 && resultCode == RESULT_OK) {
+            if (ContextCompat.checkSelfPermission(HouseOwnerActivity.this,Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED){
+                Toast.makeText(HouseOwnerActivity.this,"非常感谢您的同意",Toast.LENGTH_SHORT).show();
+            }
+
+
+            Bitmap bitmap = null;
+            try {
+                bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            cameraPic.setImageBitmap(bitmap);
         }
-    }
+
 }
 //打开相机
 public void startCamera(){

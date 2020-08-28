@@ -98,7 +98,7 @@ public class WeChatActivity extends AppCompatActivity implements View.OnClickLis
         BtnSend=(Button)findViewById(R.id.BtnSend);
         Intent intent =getIntent();
         //getXxxExtra方法获取Intent传递过来的数据
-        String msg=intent.getStringExtra("data");
+        String msg=intent.getStringExtra("name");
         textname.setText(msg);
 
         BtnSend.setOnClickListener(this);
