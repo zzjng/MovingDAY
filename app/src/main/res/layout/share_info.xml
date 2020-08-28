@@ -23,7 +23,7 @@
     android:layout_height="wrap_content"
     android:ems="10"
     android:inputType="textPostalAddress"
-    android:hint="房屋地址"
+    android:hint="旅游地点"
     android:textColorHint="#95A1AA"/>
 
     <EditText
@@ -31,7 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:inputType="textPostalAddress"
-        android:hint="请输入房源描述包括，房屋面积、租金、户型、对住户要求"
+        android:hint="请输入您对该景点的描述以及心得分享给其他驴友参考哦"
         android:textColorHint="#95A1AA"
         android:maxLines="5"/>
 
@@ -40,7 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="请输入联系方式"
+        android:hint="留下您的联系方式叭"
         android:inputType="phone"
         android:textColorHint="#95A1AA" />
 

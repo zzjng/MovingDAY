@@ -23,7 +23,7 @@
         android:layout_marginTop="7dp"
         android:text="称呼"
         android:textSize="20sp"
-        android:textColor="#000000"/>
+        android:textColor="#ffffff"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -48,24 +48,27 @@
         android:text="旅游区域"
         android:layout_marginTop="10dp"
         android:textSize="20sp"
-        android:textColor="#000000"/>
+        android:textColor="#ffffff"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="7dp"
         android:orientation="horizontal">
         <Spinner
+            android:textColor="#ffffff"
             android:id="@+id/province"
             android:orientation="vertical"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_width="100dp" />
         <Spinner
+            android:textColor="#ffffff"
             android:id="@+id/city"
             android:layout_width="112dp"
             android:layout_weight="1"
             android:layout_height="wrap_content" />
         <Spinner
+            android:textColor="#ffffff"
             android:id="@+id/county"
             android:layout_width="100dp"
             android:layout_weight="1"
@@ -80,7 +83,7 @@
         android:text="旅游大概花费"
         android:layout_marginTop="7dp"
         android:textSize="20sp"
-        android:textColor="#000000"/>
+        android:textColor="#ffffff"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -104,7 +107,7 @@
         android:layout_marginTop="7dp"
         android:text="我的个人年龄"
         android:textSize="20sp"
-        android:textColor="#000000"/>
+        android:textColor="#ffffff"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -128,7 +131,7 @@
         android:text="游玩类型"
         android:layout_marginTop="7dp"
         android:textSize="20sp"
-        android:textColor="#000000"/>
+        android:textColor="#ffffff"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:id="@+id/zhiye"
@@ -136,23 +139,27 @@
         android:layout_height="wrap_content">
 
             <CheckBox
+                android:textColor="#ffffff"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="自驾游顺路捡人"
                 android:id="@+id/c"/>
             <CheckBox
+                android:textColor="#ffffff"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="自驾游拼车"
                 android:id="@+id/d"/>
             />
             <CheckBox
+                android:textColor="#ffffff"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="骑行结伴"
                 android:id="@+id/e"/>
 
             <CheckBox
+                android:textColor="#ffffff"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="背包客"
@@ -168,15 +175,17 @@
         android:gravity="center"
         android:text="个人性别"
         android:textSize="20sp"
-        android:textColor="#000000"/>
+        android:textColor="#ffffff"/>
 
     <RadioGroup
         android:id="@+id/xingbie"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:orientation="horizontal"
+        android:textColor="#ffffff"
         android:layout_gravity="center_horizontal">
         <RadioButton
+            android:textColor="#ffffff"
             android:id="@+id/nan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -185,12 +194,14 @@
             android:text="男"/>
 
         <RadioButton
+            android:textColor="#ffffff"
             android:id="@+id/nv"
             android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="女"/>
         <RadioButton
+            android:textColor="#ffffff"
             android:id="@+id/buxian"
             android:layout_marginTop="10dp"
             android:layout_width="wrap_content"

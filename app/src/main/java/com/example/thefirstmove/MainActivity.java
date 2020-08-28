@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private void openTenant(View v){
         Intent intent = new Intent();
-        intent.setClass(MainActivity.this, TenantActivity.class);
+        intent.setClass(MainActivity.this, PlanningActivity.class);
         Bundle bundle2=new Bundle();
         bundle2.putString("phone",phoneno);
         intent.putExtras(bundle2);
@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private void openShare(View v){
         Intent intent=new Intent();
-        intent.setClass(MainActivity.this, LodgerActivity.class);
+        intent.setClass(MainActivity.this, LvyouActivity.class);
         this.startActivity(intent);
     }
 
@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private void openHouseOwner(View v){
         Intent intent = new Intent();
-        intent.setClass(MainActivity.this, HouseOwnerActivity.class);
+        intent.setClass(MainActivity.this, ShareInfoActivity.class);
         this.startActivity(intent);
     }
 

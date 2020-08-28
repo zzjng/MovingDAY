@@ -21,8 +21,8 @@ public class FavAddressItemWidget extends RelativeLayout {
     private String subTitle = "";
     private int mType = 0;
 
-    public static final String HOME_DEF_SUB_TITLE = "设置家的地址";
-    public static final String COMP_DEF_SUB_TITLE = "设置公司地址";
+    public static final String HOME_DEF_SUB_TITLE = "设置常用地址1";
+    public static final String COMP_DEF_SUB_TITLE = "设置常用地址2";
 
     public FavAddressItemWidget(Context context) {
         super(context);
@@ -56,11 +56,11 @@ public class FavAddressItemWidget extends RelativeLayout {
 
         if (FavAddressWidget.HOME_TYPE == type) {
             mIconIV.setImageDrawable(getContext().getResources().getDrawable(R.mipmap.home));
-            titleTV.setText("家");
+            titleTV.setText("常用地址1");
 
         } else {
             mIconIV.setImageDrawable(getContext().getResources().getDrawable(R.mipmap.comp));
-            titleTV.setText("公司");
+            titleTV.setText("常用地址2");
 
         }
 

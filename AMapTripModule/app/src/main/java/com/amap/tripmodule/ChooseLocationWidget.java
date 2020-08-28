@@ -144,7 +144,7 @@ public class ChooseLocationWidget extends LinearLayout implements View.OnClickLi
                 mDivider.setVisibility(View.VISIBLE);
             } else {
                 mTypeIV.setImageResource(R.mipmap.dest_icon);
-                mInputET.setHint("请输入新家地址");
+                mInputET.setHint("请输入旅游目的地");
                 mDivider.setVisibility(View.GONE);
             }
         }

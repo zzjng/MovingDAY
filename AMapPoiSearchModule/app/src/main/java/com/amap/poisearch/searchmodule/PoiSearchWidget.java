@@ -59,7 +59,7 @@ public class PoiSearchWidget extends RelativeLayout {
         if (poiType == IDelegate.START_POI_TYPE) {
             mPoiInputTV.setHint("你从哪儿出发");
         } else if (poiType == IDelegate.DEST_POI_TYPE) {
-            mPoiInputTV.setHint("请输入新家地址");
+            mPoiInputTV.setHint("请输入目的旅游地");
         }
     }
 

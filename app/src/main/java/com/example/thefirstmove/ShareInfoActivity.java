@@ -25,7 +25,7 @@ import androidx.core.content.FileProvider;
 import java.io.File;
 import java.io.IOException;
 
-public class HouseOwnerActivity extends AppCompatActivity {
+public class ShareInfoActivity extends AppCompatActivity {
 
     private Uri imageUri;
     private ImageView cameraPic;
@@ -33,7 +33,8 @@ public class HouseOwnerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.house_owner);
+        setContentView(R.layout.share_info);
+
     }
     /**
      * 检查权限
@@ -70,7 +71,7 @@ public class HouseOwnerActivity extends AppCompatActivity {
                 if (permissions[0].equals(Manifest.permission.CAMERA)){
                     if (grantResults[0]  == PackageManager.PERMISSION_GRANTED){
                         //如果用户同意了再去打开相机
-                        Toast.makeText(HouseOwnerActivity.this,"非常感谢您的同意,再会",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ShareInfoActivity.this,"非常感谢您的同意,再会",Toast.LENGTH_SHORT).show();
                         startCamera();
                     }else{
                         //因为第一次的对话框是系统提供的 从这以后系统不会自动弹出对话框 我们需要自己弹出一个对话框
@@ -83,7 +84,7 @@ public class HouseOwnerActivity extends AppCompatActivity {
     }
 //    创建一个AlertDiaLog 引导用户打开相机权限
 public void startAlertDiaLog(){
-    AlertDialog.Builder alert = new AlertDialog.Builder(HouseOwnerActivity.this);
+    AlertDialog.Builder alert = new AlertDialog.Builder(ShareInfoActivity.this);
     alert.setTitle("说明");
     alert.setMessage("需要相机权限 去拍照");
     alert.setPositiveButton("立即开启", new DialogInterface.OnClickListener() {
@@ -97,7 +98,7 @@ public void startAlertDiaLog(){
         @Override
         public void onClick(DialogInterface dialog, int which) {
             //如果用户还不打开 只能等用户下次点击时再次询问
-            Toast.makeText(HouseOwnerActivity.this,"当您点击我们会再次询问",Toast.LENGTH_SHORT).show();
+            Toast.makeText(ShareInfoActivity.this,"当您点击我们会再次询问",Toast.LENGTH_SHORT).show();
         }
     });
     alert.create();
@@ -116,10 +117,16 @@ public void startSetting(){
 protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
     if (requestCode == 10  && resultCode == RESULT_OK){
-        if (ContextCompat.checkSelfPermission(HouseOwnerActivity.this,Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED){
-            Toast.makeText(HouseOwnerActivity.this,"非常感谢您的同意",Toast.LENGTH_SHORT).show();
+        if (ContextCompat.checkSelfPermission(ShareInfoActivity.this,Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED){
+            Toast.makeText(ShareInfoActivity.this,"非常感谢您的同意",Toast.LENGTH_SHORT).show();
         }else{
         }
+    }
+    try {//将拍摄的照片显示出来
+        Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));
+        cameraPic.setImageBitmap(bitmap);
+    } catch (Exception e) {
+        e.printStackTrace();
     }
 }
 //打开相机
@@ -135,14 +142,14 @@ public void startCamera(){
     } catch (IOException e) {
         e.printStackTrace();
     }
-    ActivityCompat.requestPermissions(HouseOwnerActivity.this, new String[]{
+    ActivityCompat.requestPermissions(ShareInfoActivity.this, new String[]{
             Manifest.permission.CAMERA,
             Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
     //判断版本号
     if (Build.VERSION.SDK_INT < 24) {
         imageUri = Uri.fromFile(outputImage);
     } else {
-        imageUri = FileProvider.getUriForFile(HouseOwnerActivity.this,
+        imageUri = FileProvider.getUriForFile(ShareInfoActivity.this,
                 "com.example.thefirstmove.provider", outputImage);
     }
     /*Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);

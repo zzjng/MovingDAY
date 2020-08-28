@@ -2,8 +2,10 @@ package com.example.thefirstmove;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -46,7 +48,7 @@ private String phone;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_info);
         //
-        TextView tv=(TextView)findViewById(R.id.tv_user_name);
+        /*TextView tv=(TextView)findViewById(R.id.tv_user_name);
         Intent intent=getIntent();
         Bundle bundle=getIntent().getExtras();
         phone=bundle.getString("phone");
@@ -60,6 +62,19 @@ private String phone;
             spUserName= phone;
             initView();
             initDate();
+        }*/
+        SharedPreferences sharedPreferences= getSharedPreferences("user", Context.MODE_PRIVATE);
+        String phone=sharedPreferences.getString("userID","");
+
+        if (phone==null){
+            Toast.makeText(this,"请先登录",Toast.LENGTH_SHORT).show();
+            finish();
+        }
+        else {
+            Toast.makeText(this,"欢迎",Toast.LENGTH_SHORT).show();
+            spUserName= phone;
+            initView();
+            initDate();
         }
     }
     private void initDate() {
@@ -70,7 +85,7 @@ private String phone;
         if (bean == null) {
             bean = new UserBean();
             bean.userName = spUserName;
-            bean.nickName = "MovingDAY";
+            bean.nickName = "我是一个小驴友";
             bean.sex = "男";
             bean.signature = "这个人很懒，什么都没留下...";
             bean.qq = "未添加";

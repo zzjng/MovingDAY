@@ -1,43 +1,28 @@
 package com.example.thefirstmove;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 
-import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import android.widget.SimpleAdapter;
 import android.widget.SimpleCursorAdapter;
-import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.thefirstmove.hezu.Bean;
-
-import com.example.thefirstmove.hezu.CommonAdapter;
 import com.example.thefirstmove.hezu.HezuxinxiActivity;
 import com.example.thefirstmove.hezu.SearchActivity;
-import com.example.thefirstmove.hezu.SearchAdapter;
-import com.google.gson.Gson;
 
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -45,7 +30,7 @@ import java.util.Map;
 
 
 
-public class LodgerActivity extends AppCompatActivity {
+public class LvyouActivity extends AppCompatActivity {
 
 
     /**
@@ -62,7 +47,7 @@ private ListView lvTips;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_lodger);
+        setContentView(R.layout.activity_lvyou);
 
         tijiao=findViewById(R.id.tijiaoxinxi);
         lvTips=findViewById(R.id.show1);
@@ -122,8 +107,8 @@ private ListView lvTips;
 
 //跳转页面
 
-                Intent intent = new Intent(LodgerActivity.this,WeChatActivity.class);//OrderActivity.this,当前页面，DaiActivity.class转至du的页面
-                LodgerActivity.this.startActivity(intent);
+                Intent intent = new Intent(LvyouActivity.this,WeChatActivity.class);//OrderActivity.this,当前页面，DaiActivity.class转至du的页面
+                LvyouActivity.this.startActivity(intent);
             }
         });
 
@@ -134,13 +119,13 @@ private ListView lvTips;
     }
 
 public void OnMyqueClick(View v) {
-    Intent intent = new Intent(LodgerActivity.this, HezuxinxiActivity.class);
-    LodgerActivity.this.startActivity(intent);
+    Intent intent = new Intent(LvyouActivity.this, HezuxinxiActivity.class);
+    LvyouActivity.this.startActivity(intent);
 }
 
     public void OnMysearchClick(View v) {
-        Intent intent = new Intent(LodgerActivity.this, SearchActivity.class);
-        LodgerActivity.this.startActivity(intent);
+        Intent intent = new Intent(LvyouActivity.this, SearchActivity.class);
+        LvyouActivity.this.startActivity(intent);
     }
 
 

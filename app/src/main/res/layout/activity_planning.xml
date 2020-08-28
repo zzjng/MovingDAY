@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@mipmap/bg"
     android:orientation="vertical"
-    tools:context=".TenantActivity">
+    tools:context=".PlanningActivity">
     <TextView
         android:id="@+id/welcome"
         android:layout_width="wrap_content"
@@ -16,7 +16,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:text="欢迎您！" />
-    <TextView
+    <!--<TextView
         android:id="@+id/user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -24,7 +24,7 @@
         android:textSize="50dp"
         android:layout_below="@id/welcome"
         android:layout_centerHorizontal="true"
-        android:text="手机号" />
+        android:text="手机号" />-->
     <FrameLayout
         android:id="@+id/container"
         android:layout_width="match_parent"

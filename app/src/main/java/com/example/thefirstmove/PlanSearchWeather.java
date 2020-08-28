@@ -32,7 +32,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class TTSearchWeather extends AppCompatActivity {
+public class PlanSearchWeather extends AppCompatActivity {
     private EditText edit_city;
     private Button search_btn;
     private ListView listView;
@@ -51,18 +51,18 @@ public class TTSearchWeather extends AppCompatActivity {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case 0:
-                    //Toast.makeText(TTSearchWeather.this, (String) msg.obj, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(PlanSearchWeather.this, (String) msg.obj, Toast.LENGTH_SHORT).show();
                     break;
                 case 1:
-                    //Toast.makeText(TTSearchWeather.this, (String) msg.obj, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(PlanSearchWeather.this, (String) msg.obj, Toast.LENGTH_SHORT).show();
                     break;
                 case 2:
-                    //Toast.makeText(TTSearchWeather.this, "该城市adcode为" + (String) msg.obj, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(PlanSearchWeather.this, "该城市adcode为" + (String) msg.obj, Toast.LENGTH_SHORT).show();
                     break;
                 case 3:
                     List<Map<String, String>> list = (List<Map<String, String>>) msg.obj;
                     //创建Adapter
-                    final SimpleAdapter simpleAdapter = new SimpleAdapter(TTSearchWeather.this
+                    final SimpleAdapter simpleAdapter = new SimpleAdapter(PlanSearchWeather.this
                             , list, R.layout.weather_listview_item
                             , new String[]{"date", "day_weather", "day_temp", "day_wind", "day_power"
                             , "night_weather", "night_temp", "night_wind", "night_power"}
@@ -70,7 +70,7 @@ public class TTSearchWeather extends AppCompatActivity {
                             , R.id.night_weather, R.id.night_temp, R.id.night_wind, R.id.night_power});
                     //绑定Adapter
                     listView.setAdapter(simpleAdapter);
-                    Toast.makeText(TTSearchWeather.this, "查询成功", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PlanSearchWeather.this, "查询成功", Toast.LENGTH_SHORT).show();
                 default:
                     break;
             }
@@ -81,7 +81,7 @@ public class TTSearchWeather extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_ttsearchweather);
+        setContentView(R.layout.activity_plansearchweather);
         //初始化
         init();
     }

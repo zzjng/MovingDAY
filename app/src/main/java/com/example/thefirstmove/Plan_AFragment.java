@@ -8,12 +8,12 @@ import android.view.ViewGroup;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class TT_CFragment extends Fragment {
+public class Plan_AFragment extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState){
-        View view=inflater.inflate(R.layout.tt_cfragment,container,false);
+        View view=inflater.inflate(R.layout.plan_afragment,container,false);
         return view;
         //return super.onCreateView(inflater,container,savedInstanceState);
     }
@@ -23,4 +23,5 @@ public class TT_CFragment extends Fragment {
         super.onViewCreated(view,saveInstanceState);
 
     }
+
 }

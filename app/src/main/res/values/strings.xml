@@ -4,8 +4,7 @@
     <!--    关于我们部分-->
     <string name="member1">通信1703周梦焓</string>
     <string name="member2">通信1703张召静</string>
-    <string name="abtext">通过合租方式，人们可以以相对较低的租金享受品质较高的住房。而且有着相同兴趣爱好或目标的人合租房屋，租屋概念多样，市场预期良好。
-        发布租房信息或者寻求租房信息时是否苦于各种房屋中介的性价比对？在这里，没有中间商赚差价，平台只为促成每一对客户完成一次满意的交易。</string>
+    <string name="abtext">乐游记为各色驴友打造。行程规划？分享动态？寻找驴友？贴心提示？乐游记专为你所想。</string>
 
     <!--    登录注册页面-->
     <string name="login">登录</string>
@@ -16,7 +15,7 @@
     <string name="InputNewPSW">请输入新密码</string>
     <string name="confirm">确认</string>
     <string name="regist">注册</string>
-    <string name="camera">房屋拍照</string>
+    <string name="camera">拍照</string>
     <string name="xingbie">性别</string>
 
     <!-- TODO: Remove or change this placeholder text -->

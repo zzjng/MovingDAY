@@ -24,12 +24,12 @@ import static com.amap.poisearch.searchmodule.ISearchModule.IDelegate.DEST_POI_T
 import static com.amap.poisearch.searchmodule.ISearchModule.IDelegate.START_POI_TYPE;
 
 
-public class TTMapActivity extends AppCompatActivity {
+public class PlanMapActivity extends AppCompatActivity {
     private TripHostModuleDelegate mTripHostDelegate;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ttmap);
+        setContentView(R.layout.activity_planmap);
 
         checkLocationPermission();
         RelativeLayout contentView = (RelativeLayout)findViewById(R.id.content_view);
@@ -70,33 +70,33 @@ public class TTMapActivity extends AppCompatActivity {
 
         @Override
         public void onChooseCity() {
-            Intent intent = new Intent(TTMapActivity.this, ChooseCityActivity.class);
+            Intent intent = new Intent(PlanMapActivity.this, ChooseCityActivity.class);
             intent.putExtra(ChooseCityActivity.CURR_CITY_KEY, mTripHostDelegate.getCurrCity().getCity());
             startActivityForResult(intent, REQUEST_CHOOSE_CITY);
-            TTMapActivity.this.overridePendingTransition(R.anim.slide_in_up, 0);
+            PlanMapActivity.this.overridePendingTransition(R.anim.slide_in_up, 0);
         }
 
         @Override
         public void onChooseDestPoi() {
-            Intent intent = new Intent(TTMapActivity.this, ChoosePoiActivity.class);
+            Intent intent = new Intent(PlanMapActivity.this, ChoosePoiActivity.class);
             intent.putExtra(ChoosePoiActivity.POI_TYPE_KEY, DEST_POI_TYPE);
             intent.putExtra(ChoosePoiActivity.CITY_KEY, mTripHostDelegate.getCurrCity());
             startActivityForResult(intent, REQUEST_CHOOSE_DEST_POI);
-            TTMapActivity.this.overridePendingTransition(R.anim.slide_in_up, 0);
+            PlanMapActivity.this.overridePendingTransition(R.anim.slide_in_up, 0);
         }
 
         @Override
         public void onChooseStartPoi() {
-            Intent intent = new Intent(TTMapActivity.this, ChoosePoiActivity.class);
+            Intent intent = new Intent(PlanMapActivity.this, ChoosePoiActivity.class);
             intent.putExtra(ChoosePoiActivity.POI_TYPE_KEY, START_POI_TYPE);
             intent.putExtra(ChoosePoiActivity.CITY_KEY, mTripHostDelegate.getCurrCity());
             startActivityForResult(intent, REQUEST_CHOOSE_START_POI);
-            TTMapActivity.this.overridePendingTransition(R.anim.slide_in_up, 0);
+            PlanMapActivity.this.overridePendingTransition(R.anim.slide_in_up, 0);
         }
 
         @Override
         public void onBackToInputMode() {
-            TTMapActivity.this.onBackToInputMode();
+            PlanMapActivity.this.onBackToInputMode();
         }
 
         @Override
@@ -146,7 +146,7 @@ public class TTMapActivity extends AppCompatActivity {
                             mStartPoi.getLatLonPoint().getLongitude(), res);
 
                     if (res[0] <= MIN_START_DEST_DISTANCE) {
-                        showMsg("距离过近，请重新选择目的地");
+                        showMsg("距离过近，可以自行规划哦~");
                         return;
                     }
 
@@ -220,15 +220,15 @@ public class TTMapActivity extends AppCompatActivity {
         // 检查是否有定位权限
         // 检查权限的方法: ContextCompat.checkSelfPermission()两个参数分别是Context和权限名.
         // 返回PERMISSION_GRANTED是有权限，PERMISSION_DENIED没有权限
-        if (ContextCompat.checkSelfPermission(TTMapActivity.this,
+        if (ContextCompat.checkSelfPermission(PlanMapActivity.this,
                 Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
             //没有权限，向系统申请该权限。
             Log.i("MY","没有权限");
-            ActivityCompat.requestPermissions(TTMapActivity.this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},100);
+            ActivityCompat.requestPermissions(PlanMapActivity.this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},100);
         } else {
             //已经获得权限，则执行定位请求。
-            Toast.makeText(TTMapActivity.this, "已获取定位权限",Toast.LENGTH_SHORT).show();
+            Toast.makeText(PlanMapActivity.this, "已获取定位权限",Toast.LENGTH_SHORT).show();
         }
     }
 }

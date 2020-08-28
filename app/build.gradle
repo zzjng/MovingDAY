@@ -65,6 +65,9 @@ dependencies {
     compileOnly 'com.amap.api:location:latest.integration'
     //搜索功能
     compileOnly 'com.amap.api:search:latest.integration'
+
+    compileOnly 'com.amap.api:search:5.0.0'
+
     //导航功能
     compileOnly 'com.amap.api:navi-3dmap:latest.integration'
     //天气

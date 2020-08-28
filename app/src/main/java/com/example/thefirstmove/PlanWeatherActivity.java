@@ -40,7 +40,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class TTWeatherActivity extends AppCompatActivity {
+public class PlanWeatherActivity extends AppCompatActivity {
 
     //控件
     private ListView listView;
@@ -77,11 +77,11 @@ public class TTWeatherActivity extends AppCompatActivity {
                     //获取经纬度,截取经纬度（不超过6位）
                     longitude = String.valueOf(aMapLocation.getLongitude()).substring(0, 5);
                     latitude = String.valueOf(aMapLocation.getLatitude()).substring(0, 5);
-                    //Toast.makeText(TTWeatherActivity.this, "经纬度为：" + longitude + "," + latitude, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(PlanWeatherActivity.this, "经纬度为：" + longitude + "," + latitude, Toast.LENGTH_SHORT).show();
                     //根据经纬度获取adcode
                     getAdcode(longitude + "," + latitude);
                 } else {
-                    Toast.makeText(TTWeatherActivity.this, "定位失败，ErrCode=" + aMapLocation.getErrorCode(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PlanWeatherActivity.this, "定位失败，ErrCode=" + aMapLocation.getErrorCode(), Toast.LENGTH_SHORT).show();
 
                     //定位失败时,可通过ErrCode(错误码)信息来确定失败的原因,errInfo是错误信息,详见错误码表。
                     Log.i("AmapError", "location Error, ErrCode:"
@@ -98,17 +98,17 @@ public class TTWeatherActivity extends AppCompatActivity {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case 0:
-                    //Toast.makeText(TTWeatherActivity.this, (String) msg.obj, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(PlanWeatherActivity.this, (String) msg.obj, Toast.LENGTH_SHORT).show();
                     break;
                 case 1:
-                    //Toast.makeText(TTWeatherActivity.this, "该城市adcode为" + (String) msg.obj, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(PlanWeatherActivity.this, "该城市adcode为" + (String) msg.obj, Toast.LENGTH_SHORT).show();
                     break;
                 case 2:
-                    //Toast.makeText(TTWeatherActivity.this, (String) msg.obj, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(PlanWeatherActivity.this, (String) msg.obj, Toast.LENGTH_SHORT).show();
                     break;
                 case 3:
                     //创建Adapter
-                    final SimpleAdapter simpleAdapter = new SimpleAdapter(TTWeatherActivity.this
+                    final SimpleAdapter simpleAdapter = new SimpleAdapter(PlanWeatherActivity.this
                             , weatherList, R.layout.weather_listview_item
                             , new String[]{"date", "day_weather", "day_temp", "day_wind", "day_power"
                             , "night_weather", "night_temp", "night_wind", "night_power"}
@@ -116,7 +116,7 @@ public class TTWeatherActivity extends AppCompatActivity {
                             , R.id.night_weather, R.id.night_temp, R.id.night_wind, R.id.night_power});
                     //绑定Adapter
                     listView.setAdapter(simpleAdapter);
-                    Toast.makeText(TTWeatherActivity.this, (String) msg.obj, Toast.LENGTH_LONG).show();
+                    Toast.makeText(PlanWeatherActivity.this, (String) msg.obj, Toast.LENGTH_LONG).show();
                     break;
             }
         }
@@ -127,14 +127,14 @@ public class TTWeatherActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //去除标题栏
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_ttweather);
-        Toast.makeText(TTWeatherActivity.this,"请稍候，正在查询",Toast.LENGTH_SHORT).show();
+        setContentView(R.layout.activity_planweather);
+        Toast.makeText(PlanWeatherActivity.this,"请稍候，正在查询",Toast.LENGTH_SHORT).show();
         //初始化
         init();
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             //如果权限不足提示请求权限
-            ActivityCompat.requestPermissions(TTWeatherActivity.this,new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
+            ActivityCompat.requestPermissions(PlanWeatherActivity.this,new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
         } else {
             //如果权限已允许，准备定位
             prepareLocation();
@@ -158,7 +158,7 @@ public class TTWeatherActivity extends AppCompatActivity {
             //如果允许权限则准备定位
             prepareLocation();
         } else {
-            Toast.makeText(TTWeatherActivity.this, "请允许应用获取相应的权限", Toast.LENGTH_LONG).show();
+            Toast.makeText(PlanWeatherActivity.this, "请允许应用获取相应的权限", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -197,7 +197,7 @@ public class TTWeatherActivity extends AppCompatActivity {
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(TTWeatherActivity.this, TTSearchWeather.class);
+                Intent intent = new Intent(PlanWeatherActivity.this, PlanSearchWeather.class);
                 startActivity(intent);
             }
         });

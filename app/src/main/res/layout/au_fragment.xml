@@ -22,8 +22,7 @@
         android:layout_centerHorizontal="true"
         android:textSize="40sp"
         android:textColor="#ffff"
-        android:text="MovingDAY创作理念" />
-
+        android:text="乐游记 创作理念" />
     <TextView
         android:id="@+id/abtext"
         android:layout_width="wrap_content"

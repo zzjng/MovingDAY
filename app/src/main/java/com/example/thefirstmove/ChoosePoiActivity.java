@@ -32,7 +32,7 @@ public class ChoosePoiActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ttmap);
+        setContentView(R.layout.activity_planmap);
 
         RelativeLayout contentView = (RelativeLayout)findViewById(R.id.content_view);
 
@@ -116,13 +116,13 @@ public class ChoosePoiActivity extends AppCompatActivity {
         }
         @Override
         public void onSetFavHomePoi() {
-            showToast("设置家的地址");
+            showToast("设置出发的地址");
             toSetFavAddressActivity(0);
         }
 
         @Override
         public void onSetFavCompPoi() {
-            showToast("设置公司地址");
+            showToast("设置到达的地址");
             toSetFavAddressActivity(1);
         }
 

@@ -2,8 +2,6 @@ package com.example.thefirstmove.hezu;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -19,20 +17,12 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SimpleAdapter;
-import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.thefirstmove.LodgerActivity;
-import com.example.thefirstmove.MainActivity;
+import com.example.thefirstmove.LvyouActivity;
 import com.example.thefirstmove.R;
 import com.example.thefirstmove.dao.DBOpenHelper;
-import com.google.gson.Gson;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class SearchActivity extends AppCompatActivity {
 
@@ -131,10 +121,10 @@ public class SearchActivity extends AppCompatActivity {
         zhiye = (LinearLayout) findViewById(R.id.zhiyeleixing);
         quxiao = (Button) findViewById(R.id.quxiao);
         sure = (Button) findViewById(R.id.queren);
-        // lvTips= (ListView) View.inflate(this,R.layout.activity_lodger,null).findViewById(R.id.show1);
+        // lvTips= (ListView) View.inflate(this,R.layout.activity_lvyou,null).findViewById(R.id.show1);
 
 //        LayoutInflater factory = LayoutInflater.from(SearchActivity.this);
-//        View layout = factory.inflate(R.layout.activity_lodger, null);
+//        View layout = factory.inflate(R.layout.activity_lvyou, null);
 //        ListView lvTips = (ListView) layout.findViewById(R.id.main_lv_search_results);
 
 
@@ -281,13 +271,13 @@ public class SearchActivity extends AppCompatActivity {
 //
 //
 //
-                    Intent i = new Intent(SearchActivity.this, LodgerActivity.class);
+                    Intent i = new Intent(SearchActivity.this, LvyouActivity.class);
                     startActivity(i);
 
 
 ////显示数据listview
 ////            adapter = new SimpleCursorAdapter(this,
-////                    R.layout.list,//R.layout.activity_lodger
+////                    R.layout.list,//R.layout.activity_lvyou
 ////                    c,
 ////                    new String[]{"mingzi","province", "country", "city", "zujin", "nianling", "zhiye", "xingbie"},//游标数据的名称，实际是Table列名字
 ////                    new int[]{R.id.name,R.id.sheng,R.id.shi,R.id.qu,R.id.jin,R.id.year,R.id.ye,R.id.xing}, 0);//对应的UI微件的id  R.id.main_lv_search_results
