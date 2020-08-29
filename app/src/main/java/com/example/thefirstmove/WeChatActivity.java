@@ -39,7 +39,7 @@ public class WeChatActivity extends AppCompatActivity implements View.OnClickLis
     private  TextView textname;
     private List<WeChatMessage> mData = new ArrayList<>();
     private WeChatAdapter mAdapter;
-    private  boolean isRunning=false;
+     boolean isRunning=false;
 
     private Socket socketSend;
     private String ip="172.26.203.250";
@@ -50,7 +50,6 @@ public class WeChatActivity extends AppCompatActivity implements View.OnClickLis
     private String timMsg;//时间消息类型
     private String recMsg;//接收消息类型
     private boolean isSend=false;//发送检测
-
     private ListView mListView;
 
     /**
@@ -93,23 +92,25 @@ public class WeChatActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_chat1);
+
         InputBox=(EditText)findViewById(R.id.InputBox);
         textname=(TextView)findViewById(R.id.textname);
         BtnSend=(Button)findViewById(R.id.BtnSend);
         Intent intent =getIntent();
-        //getXxxExtra方法获取Intent传递过来的数据
+        //getXxxExtra方法获取Intent传递过来的数据用户名
         String msg=intent.getStringExtra("name");
         textname.setText(msg);
 
         BtnSend.setOnClickListener(this);
 
-        runOnUiThread(new Runnable() {//执行UI更新操作
+        runOnUiThread(new Runnable() {
             @Override
-            public void run() {
-                LinearLayoutManager layoutManager = new LinearLayoutManager(WeChatActivity.this);
+            public void run() {//执行UI更新操作
 
-                mListView=(ListView)findViewById(R.id.MainList);
-                mAdapter=new WeChatAdapter(WeChatActivity.this,mData);
+                LinearLayoutManager layoutManager = new LinearLayoutManager(WeChatActivity.this);
+                mListView = (ListView) findViewById(R.id.MainList);
+
+                mAdapter = new WeChatAdapter(WeChatActivity.this, mData);
                 mListView.setAdapter(mAdapter);
                 mListView.smoothScrollToPositionFromTop(mData.size(), 0);
             }
@@ -122,49 +123,69 @@ public class WeChatActivity extends AppCompatActivity implements View.OnClickLis
             @Override
             public void run(){
                 try{
-                    socketSend = new Socket(ip, Integer.parseInt(port));
-                        //阻塞停止，表示连接成功，发送连接成功消息
+                    if((socketSend = new Socket(ip,Integer.parseInt(port)))==null){
+                        Log.d("ttw","发送了一条消息1");
+                    }
+                    else{
+                        isRunning = true;
+                        Log.d("ttw","发送了一条消息2");
+                        dis = new DataInputStream(socketSend.getInputStream());
+                        dos = new DataOutputStream(socketSend.getOutputStream());
+                        new Thread(new Time(),"时间线程").start();
+                        new Thread(new receive(),"接收线程").start();
+                        new Thread(new Send(),"发送线程").start();
                         Message message=new Message();
                         message.arg1=1;
                         handler.sendMessage(message);
-                        isRunning=true;
-                        Looper.prepare();
-                    Looper.loop();
+                    }
+//                    socketSend = new Socket(ip, Integer.parseInt(port));
+//                        //阻塞停止，表示连接成功，发送连接成功消息
+//                        Message message=new Message();
+//                        message.arg1=1;
+//                        handler.sendMessage(message);
+//                        isRunning=true;
 
                 }catch(Exception e) {
+                    isRunning = false;
+                    e.printStackTrace();
+                    Looper.prepare();
+                    Toast.makeText(WeChatActivity.this, "连接服务器失败！！！", Toast.LENGTH_SHORT).show();
+                    Looper.loop();
 
                     Message message=new Message();
                     message.arg1=0;
                     message.obj="连接服务器时异常";
                     handler.sendMessage(message);
-                    System.out.println("建立失败////////////////////////////////////////////");
-                    e.printStackTrace();
-                    return;
-
-                }
-                try {
-
-                    dis = new DataInputStream(socketSend.getInputStream());
-                    dos = new DataOutputStream(socketSend.getOutputStream());
-                 } catch (IOException e) {
-                    isRunning=false;
-                    Message message=new Message();
-                    message.arg1=0;
-                    message.obj="获取输入输出流异常";
-                    handler.sendMessage(message);
-                    e.printStackTrace();
-                    return;
-                }
-
-                new Thread(new receive(), "接收线程").start();
-                new Thread(new Send(), "发送线程").start();
-
-                try{
+                    try{
                         socketSend.close();
                     }catch(IOException e1){
                         e1.printStackTrace();
                     }
                     finish();
+                }
+//                try {
+//
+//                    dis = new DataInputStream(socketSend.getInputStream());
+//                    dos = new DataOutputStream(socketSend.getOutputStream());
+//                 } catch (IOException e) {
+//                    isRunning=false;
+//                    Message message=new Message();
+//                    message.arg1=0;
+//                    message.obj="获取输入输出流异常";
+//                    handler.sendMessage(message);
+//                    e.printStackTrace();
+//                    return;
+//                }
+//
+//                new Thread(new receive(), "接收线程").start();
+//                new Thread(new Send(), "发送线程").start();
+//
+//                try{
+//                        socketSend.close();
+//                    }catch(IOException e1){
+//                        e1.printStackTrace();
+//                    }
+//                    finish();
                 }
         }).start();
     }
@@ -193,30 +214,35 @@ public class WeChatActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View v) {
 
-
+        String content = InputBox.getText().toString();
         InputMethodManager imm=(InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
-        if(InputBox.getText().toString()!="")
+
+        //获取时间
+        Calendar c=Calendar.getInstance();
+        StringBuilder mBuilder=new StringBuilder();
+        mBuilder.append(Integer.toString(c.get(Calendar.YEAR))+"年");
+        mBuilder.append(Integer.toString(c.get(Calendar.MONTH)+1)+"月");
+        mBuilder.append(Integer.toString(c.get(Calendar.DATE))+"日");
+        mBuilder.append(Integer.toString(c.get(Calendar.HOUR_OF_DAY)+8)+":");
+        mBuilder.append(Integer.toString(c.get(Calendar.MINUTE)));
+        timMsg=mBuilder.toString();
+
+        if(content!="")
         {
-            //获取时间
-            Calendar c=Calendar.getInstance();
-            StringBuilder mBuilder=new StringBuilder();
-            mBuilder.append(Integer.toString(c.get(Calendar.YEAR))+"年");
-            mBuilder.append(Integer.toString(c.get(Calendar.MONTH)+1)+"月");
-            mBuilder.append(Integer.toString(c.get(Calendar.DATE))+"日");
-            mBuilder.append(Integer.toString(c.get(Calendar.HOUR_OF_DAY))+":");
-            mBuilder.append(Integer.toString(c.get(Calendar.MINUTE)));
+
             //构造时间消息
-            WeChatMessage Message=new WeChatMessage(WeChatMessage.MessageType_Time,mBuilder.toString());
+            WeChatMessage Message=new WeChatMessage(WeChatMessage.MessageType_Time,timMsg);
             mData.add(Message);
             //构造输入消息
-            Message=new WeChatMessage(WeChatMessage.MessageType_To,InputBox.getText().toString());
-            mData.add(Message);
+            WeChatMessage Message1=new WeChatMessage(WeChatMessage.MessageType_To,InputBox.getText().toString());
+            mData.add(Message1);
             //构造返回消息，如果这里加入网络的功能，那么这里将变成一个网络机器人
 //            Message=new WeChatMessage(WeChatMessage.MessageType_From,"暂时不在，一会回来！");
 //            mData.add(Message);
             //更新数据
             mAdapter.Refresh();
         }
+        mBuilder.delete(0,mBuilder.length());
         //清空输入框
         InputBox.setText("");
         //关闭输入法
@@ -227,33 +253,53 @@ public class WeChatActivity extends AppCompatActivity implements View.OnClickLis
 
     }
 
+    class Time implements Runnable{
+        public void run(){
+            timMsg="";
+            recMsg="";
+            try {
+                recMsg = dis.readUTF();
+            } catch (IOException e) {
+                e.printStackTrace();
+                Message   message=new Message();
+                message.arg1=0;
+                message.obj="数据发送异常";
+                handler.sendMessage(message);
+            }
+            Calendar c = Calendar.getInstance();
+            StringBuilder mBuilder = new StringBuilder();
+            mBuilder.append(Integer.toString(c.get(Calendar.YEAR)) + "年");
+            mBuilder.append(Integer.toString(c.get(Calendar.MONTH) + 1) + "月");
+            mBuilder.append(Integer.toString(c.get(Calendar.DATE)) + "日");
+            mBuilder.append(Integer.toString(c.get(Calendar.HOUR_OF_DAY)) + ":");
+            mBuilder.append(Integer.toString(c.get(Calendar.MINUTE)));
+            timMsg = mBuilder.toString();
+
+            while(isRunning) {
+                String content = InputBox.getText().toString();
+                if(recMsg!=""||content!=""){
+                Message message = new Message();
+                message.arg1 = 3;
+                message.obj = timMsg;
+                handler.sendMessage(message);
+               }
+
+            }
+        }
+    }
+
+
     class receive implements Runnable{
         public void run(){
             recMsg = "";
-            timMsg="";
             while(isRunning){
-//获取时间
-                Calendar c=Calendar.getInstance();
-                StringBuilder mBuilder=new StringBuilder();
-                mBuilder.append(Integer.toString(c.get(Calendar.YEAR))+"年");
-                mBuilder.append(Integer.toString(c.get(Calendar.MONTH)+1)+"月");
-                mBuilder.append(Integer.toString(c.get(Calendar.DATE))+"日");
-                mBuilder.append(Integer.toString(c.get(Calendar.HOUR_OF_DAY))+":");
-                mBuilder.append(Integer.toString(c.get(Calendar.MINUTE)));
-                timMsg=mBuilder.toString();
-
-                Message message=new Message();
-                message.arg1=3;
-                message.obj=timMsg;
-                handler.sendMessage(message);
-
                 try {
 
                     recMsg = dis.readUTF();
 
                 } catch (IOException e) {
                     System.out.println(e);
-                     message=new Message();
+                    Message  message=new Message();
                     message.arg1=0;
                     message.obj="数据发送异常";
                     handler.sendMessage(message);
@@ -262,11 +308,10 @@ public class WeChatActivity extends AppCompatActivity implements View.OnClickLis
 
                 if(!TextUtils.isEmpty(recMsg)){
 //发送出收到的数据
-                    message=new Message();
+                    Message  message=new Message();
                     message.arg1=2;
                     message.obj=recMsg;
                     handler.sendMessage(message);
-
                 }
                 }
             }
@@ -280,29 +325,24 @@ public class WeChatActivity extends AppCompatActivity implements View.OnClickLis
                 String content = InputBox.getText().toString();
 
                 if (!"".equals(content) && isSend) {
-                        //获取时间
-                        Calendar c=Calendar.getInstance();
-                        StringBuilder mBuilder=new StringBuilder();
-                        mBuilder.append(Integer.toString(c.get(Calendar.YEAR))+"年");
-                        mBuilder.append(Integer.toString(c.get(Calendar.MONTH))+"月");
-                        mBuilder.append(Integer.toString(c.get(Calendar.DATE))+"日");
-                        mBuilder.append(Integer.toString(c.get(Calendar.HOUR_OF_DAY))+":");
-                        mBuilder.append(Integer.toString(c.get(Calendar.MINUTE)));
-                        //构造时间消息
-//                      WeChatMessage Message=new WeChatMessage(WeChatMessage.MessageType_Time,mBuilder.toString());
-//                        mData.add(Message);
-
-                    timMsg=mBuilder.toString();
-
-                    Message message=new Message();
-                    message.arg1=3;
-                    message.obj=timMsg;
-                    handler.sendMessage(message);
+//                        //获取时间
+//                        Calendar c=Calendar.getInstance();
+//                        StringBuilder mBuilder=new StringBuilder();
+//                        mBuilder.append(Integer.toString(c.get(Calendar.YEAR))+"年");
+//                        mBuilder.append(Integer.toString(c.get(Calendar.MONTH))+"月");
+//                        mBuilder.append(Integer.toString(c.get(Calendar.DATE))+"日");
+//                        mBuilder.append(Integer.toString(c.get(Calendar.HOUR_OF_DAY))+":");
+//                        mBuilder.append(Integer.toString(c.get(Calendar.MINUTE)));
+//                        //构造时间消息
+////                      WeChatMessage Message=new WeChatMessage(WeChatMessage.MessageType_Time,mBuilder.toString());
+////                        mData.add(Message);
+//
+//                    timMsg=mBuilder.toString();
 
                     try {
-                        dos.writeUTF(mBuilder.toString());
+//                        dos.writeUTF(mBuilder.toString());
                         dos.writeUTF(content);
-                        mBuilder.delete(0, mBuilder.length());
+//                        mBuilder.delete(0, mBuilder.length());
                         Log.d("ttw", "发送了一条消息");
                     } catch (IOException e) {
                         e.printStackTrace();

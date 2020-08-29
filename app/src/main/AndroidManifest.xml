@@ -39,7 +39,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".WeChatActivity"></activity>
+        <activity android:name=".WeChatActivity"
+            android:exported="true" ></activity>
+
         <activity android:name=".ShareInfoActivity"></activity>
         <activity android:name=".RegistActivity"></activity>
         <activity android:name=".hezu.SearchActivity" />
