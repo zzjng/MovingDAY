@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * 跳转至我是房客界面
+     * 跳转至行程规划界面
      * @param v
      */
     private void openTenant(View v){
@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * 跳转至合租论坛界面
+     * 跳转至找驴友界面
      * @param v
      */
     private void openShare(View v){
@@ -97,12 +97,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * 跳转至我是房主界面，个人资料上传，房源信息上传
+     * 跳转至分享动态界面
      * @param v
      */
     private void openHouseOwner(View v){
         Intent intent = new Intent();
-        intent.setClass(MainActivity.this, ShareInfoActivity.class);
+        intent.setClass(MainActivity.this, SharepiActivity.class);
         this.startActivity(intent);
     }
 

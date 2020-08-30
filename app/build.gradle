@@ -47,7 +47,6 @@ android {
 }
 
 
-
 dependencies {
 
     implementation fileTree(include: ['*.jar'], dir: 'libs')
@@ -85,5 +84,5 @@ dependencies {
 MobSDK {
     appKey "m308edbc4bfa04"
     appSecret "31411b29bdc5e67b9e77c4c21f368038"
-    SMSSDK {gui false}
+    SMSSDK { gui false }
 }

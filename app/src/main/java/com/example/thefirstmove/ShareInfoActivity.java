@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -34,17 +35,13 @@ public class ShareInfoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.share_info);
-    }
-    /**
-     * 检查权限
-     */
-    public void showimage(View view){
-        try {//将拍摄的照片显示出来
-            Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));
-            cameraPic.setImageBitmap(bitmap);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        Button commit=(Button)findViewById(R.id.commit);
+        commit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
     public void click(View view)  {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED){

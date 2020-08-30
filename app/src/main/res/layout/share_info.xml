@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,59 +7,61 @@
     android:background="@mipmap/bg"
     android:gravity="center_horizontal"
     android:orientation="vertical">
-
-    <EditText
-        android:id="@+id/editText3"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/bg"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+        <EditText
+        android:id="@+id/nick"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="如何称呼"
-        android:textColorHint="#95A1AA" />
+        android:textColorHint="#C0C0C0"
+        android:textColor="@color/color_white"/>
+        <EditText
+            android:id="@+id/address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPostalAddress"
+            android:hint="旅游地点"
+            android:textColorHint="#C0C0C0"
+            android:textColor="@color/color_white"/>
 
-    <EditText
-        android:id="@+id/house"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:ems="10"
-    android:inputType="textPostalAddress"
-    android:hint="旅游地点"
-    android:textColorHint="#95A1AA"/>
-
-    <EditText
-        android:id="@+id/description"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:inputType="textPostalAddress"
-        android:hint="请输入您对该景点的描述以及心得分享给其他驴友参考哦"
-        android:textColorHint="#95A1AA"
-        android:maxLines="5"/>
-
-    <EditText
-        android:id="@+id/phone1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="留下您的联系方式叭"
-        android:inputType="phone"
-        android:textColorHint="#95A1AA" />
-
-    <Button
-        android:id="@+id/camera"
-        style="@style/texts"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/yellowrow_shape"
-        android:onClick="click"
-        android:text="@string/camera" />
-
-
+        <EditText
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:inputType="textLongMessage"
+            android:hint="请输入您对该景点的描述以及心得分享给其他驴友参考哦"
+            android:textColorHint="#C0C0C0"
+            android:textColor="@color/color_white"
+            android:maxLines="5"/>
         <ImageView
             android:id="@+id/CameraPic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:srcCompat="@tools:sample/avatars" />
 
-
-
-</LinearLayout>
+        <Button
+            android:id="@+id/camera"
+            style="@style/texts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/yellowrow_shape"
+            android:onClick="click"
+            android:text="@string/camera" />
+        <Button
+            android:id="@+id/commit"
+            style="@style/texts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_blue_selector"
+            android:onClick="click"
+            android:text="发表" />
+    </LinearLayout>
+</ScrollView>

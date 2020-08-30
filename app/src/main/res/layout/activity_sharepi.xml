@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bg"
+    tools:context=".SharepiActivity">
+
+    <Button
+        android:id="@+id/ckdt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/text"
+        android:textColor="@color/color_white"
+        android:background="@drawable/btn_blue_selector"
+        android:text="查看动态" />
+<TextView
+    android:id="@+id/text"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_above="@id/fbdt"
+    android:textSize="30dp"/>
+
+    <Button
+        android:id="@+id/fbdt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:textColor="@color/color_white"
+        android:background="@drawable/btn_blue_selector"
+        android:text="发表动态" />
+    <TextView
+        android:id="@+id/text2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fbdt"
+        android:textSize="30dp"/>
+    <Button
+        android:id="@+id/cktp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text2"
+        android:textColor="@color/color_white"
+        android:background="@drawable/btn_blue_selector"
+        android:text="查看图片" />
+</RelativeLayout>
