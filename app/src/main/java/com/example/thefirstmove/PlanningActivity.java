@@ -1,8 +1,6 @@
 package com.example.thefirstmove;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,7 +19,7 @@ public class PlanningActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_planning);
         //
-        /*TextView tv=(TextView)findViewById(R.id.user);
+        //TextView tv=(TextView)findViewById(R.id.user);
         Intent intent=getIntent();
         Bundle bundle=getIntent().getExtras();
         phone=bundle.getString("phone");
@@ -30,8 +28,9 @@ public class PlanningActivity extends AppCompatActivity {
             finish();
         }
         else {
-            tv.setText(phone);*/
-        SharedPreferences sharedPreferences= getSharedPreferences("user", Context.MODE_PRIVATE);
+            //tv.setText(phone);
+            Toast.makeText(this,"欢迎"+phone,Toast.LENGTH_SHORT).show();
+        /*SharedPreferences sharedPreferences= getSharedPreferences("user", Context.MODE_PRIVATE);
         String phone=sharedPreferences.getString("userID","");
 
         if (phone==null){
@@ -39,7 +38,7 @@ public class PlanningActivity extends AppCompatActivity {
             finish();
         }
         else {
-            Toast.makeText(this,"欢迎"+phone,Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"欢迎"+phone,Toast.LENGTH_SHORT).show();*/
             Button First = (Button) findViewById(R.id.findmap);
             First.setOnClickListener(new View.OnClickListener() {
                 @Override

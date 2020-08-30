@@ -56,8 +56,10 @@
         <activity android:name=".ChooseCityActivity" />
         <activity android:name=".ChangeUserInfoActivity" />
         <activity android:name=".ChatActivity" />
+
         <activity android:name=".PlanWeatherActivity" />
         <activity android:name=".PlanSearchWeather" />
+
         <activity
             android:name=".PlanMapActivity"
             android:exported="true" />

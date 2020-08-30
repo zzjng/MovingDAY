@@ -2,10 +2,8 @@ package com.example.thefirstmove;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -48,7 +46,7 @@ private String phone;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_info);
         //
-        /*TextView tv=(TextView)findViewById(R.id.tv_user_name);
+        TextView tv=(TextView)findViewById(R.id.tv_user_name);
         Intent intent=getIntent();
         Bundle bundle=getIntent().getExtras();
         phone=bundle.getString("phone");
@@ -58,12 +56,13 @@ private String phone;
         }
         else {
             tv.setText(phone);
+            Toast.makeText(this,"欢迎"+phone,Toast.LENGTH_SHORT).show();
             //
             spUserName= phone;
             initView();
             initDate();
-        }*/
-        SharedPreferences sharedPreferences= getSharedPreferences("user", Context.MODE_PRIVATE);
+        }
+        /*SharedPreferences sharedPreferences= getSharedPreferences("user", Context.MODE_PRIVATE);
         String phone=sharedPreferences.getString("userID","");
 
         if (phone==null){
@@ -75,7 +74,7 @@ private String phone;
             spUserName= phone;
             initView();
             initDate();
-        }
+        }*/
     }
     private void initDate() {
         UserBean bean = null;

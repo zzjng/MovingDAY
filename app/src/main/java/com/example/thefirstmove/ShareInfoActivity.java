@@ -2,11 +2,14 @@ package com.example.thefirstmove;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -14,6 +17,7 @@ import android.provider.MediaStore;
 import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -23,6 +27,9 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
+import com.example.thefirstmove.sqlite.MyDatabaseHelper;
+
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 
@@ -30,18 +37,70 @@ public class ShareInfoActivity extends AppCompatActivity {
 
     private Uri imageUri;
     private ImageView cameraPic;
-
+    private MyDatabaseHelper dbHelper;
+    private EditText ed1,ed2,ed3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.share_info);
         Button commit=(Button)findViewById(R.id.commit);
+        ed1 = (EditText) findViewById(R.id.nick);
+        ed2 = (EditText) findViewById(R.id.address);
+        ed3 = (EditText) findViewById(R.id.description);
+        cameraPic = (ImageView) findViewById(R.id.CameraPic);
+        dbHelper = new MyDatabaseHelper(this, "16204204.db", null, 1);
+        dbHelper.getWritableDatabase();
         commit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Bitmap bmp = null;
+                bmp = BitmapFactory.decodeResource(getResources(),R.id.CameraPic);
+
+
+                String nick=ed1.getText().toString();
+                String address=ed2.getText().toString();
+                String description=ed3.getText().toString();
+                SQLiteDatabase db=dbHelper.getWritableDatabase();
+
+
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+
+                ((BitmapDrawable) cameraPic.getDrawable()).getBitmap().compress(
+                        Bitmap.CompressFormat.PNG, 100, baos);//压缩为PNG格式,100表示跟原图大小一样
+                byte[] args = baos.toByteArray();
+                try {
+                    baos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                ContentValues values =new ContentValues();
+                values.put("nick",nick);
+                values.put("address",address);
+                values.put("description",description);
+                values.put("id","a");
+                //values.put("img", args);
+                //System.out.println(args+"存入数据库前的byte");
+                //values.put("img", String.valueOf(args));
+                db.insert("aaatable",null,values);
+                values.clear();
+
                 finish();
             }
         });
+
+
+    }
+    /**
+     * 检查权限
+     */
+    public void showimage(View view){
+        try {//将拍摄的照片显示出来
+            Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));
+            cameraPic.setImageBitmap(bitmap);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     public void click(View view)  {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED){
@@ -67,7 +126,7 @@ public class ShareInfoActivity extends AppCompatActivity {
                 if (permissions[0].equals(Manifest.permission.CAMERA)){
                     if (grantResults[0]  == PackageManager.PERMISSION_GRANTED){
                         //如果用户同意了再去打开相机
-                        Toast.makeText(ShareInfoActivity.this,"非常感谢您的同意,再会",Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(ShareInfoActivity.this,"非常感谢您的同意,再会",Toast.LENGTH_SHORT).show();
                         startCamera();
                     }else{
                         //因为第一次的对话框是系统提供的 从这以后系统不会自动弹出对话框 我们需要自己弹出一个对话框

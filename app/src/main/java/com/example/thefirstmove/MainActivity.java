@@ -103,6 +103,9 @@ public class MainActivity extends AppCompatActivity {
     private void openHouseOwner(View v){
         Intent intent = new Intent();
         intent.setClass(MainActivity.this, SharepiActivity.class);
+        Bundle bundle2=new Bundle();
+        bundle2.putString("phone",phoneno);
+        intent.putExtras(bundle2);
         this.startActivity(intent);
     }
 

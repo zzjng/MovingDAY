@@ -1,8 +1,6 @@
 package com.example.thefirstmove;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,15 +13,25 @@ public class SharepiActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sharepi);
-        SharedPreferences sharedPreferences= getSharedPreferences("user", Context.MODE_PRIVATE);
-        String phone=sharedPreferences.getString("userID","");
 
+        Intent intent=getIntent();
+        Bundle bundle=getIntent().getExtras();
+        String phone=bundle.getString("phone");
+        if (phone==null){
+            Toast.makeText(this,"对不起，您未登录",Toast.LENGTH_SHORT).show();
+            finish();
+        }
+        else {
+            Toast.makeText(this,"欢迎"+phone,Toast.LENGTH_SHORT).show();
+
+        /*SharedPreferences sharedPreferences= getSharedPreferences("user", Context.MODE_PRIVATE);
+        String phone=sharedPreferences.getString("userID","");
         if (phone==null){
             Toast.makeText(this,"请先登录",Toast.LENGTH_SHORT).show();
             finish();
         }
         else {
-            Toast.makeText(this,"欢迎",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"欢迎",Toast.LENGTH_SHORT).show();*/
         }
         Button ckdt=(Button)findViewById(R.id.ckdt);
         ckdt.setOnClickListener(new View.OnClickListener() {
